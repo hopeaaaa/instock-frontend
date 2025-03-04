@@ -6,6 +6,7 @@ import WarehousesPage from "./pages/Warehouses/WarehousesPage.jsx";
 import InventoryPage from "./pages/Inventory/InventoryPage.jsx";
 
 function App() {
+<<<<<<< HEAD
   return (
     <BrowserRouter>
       <Header />
@@ -18,6 +19,9 @@ function App() {
       <Footer />
     </BrowserRouter>
   );
+=======
+  return <p>hello</p>;
+>>>>>>> develop
 }
 
 export default App;
