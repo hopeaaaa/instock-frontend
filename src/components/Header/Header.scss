@@ -5,16 +5,48 @@
   background-color: $graphite;
   display: flex;
   flex-direction: column;
-  &__hero-image {
-    margin: 0rem auto;
+  padding: 1rem 0rem 6rem;
+  @include tablet {
+    padding: 2rem 1rem 6rem;
+    flex-direction: row;
+    justify-content: space-between;
   }
+  @include desktop {
+    padding: 2.5rem 4rem 8rem;
+  }
+
   &__instock {
     @include dimensions(max-content, 100%);
+    display: flex;
     justify-content: center;
+    @include tablet {
+      width: max-content;
+    }
   }
-  &__redirect {
-    color: $white;
-    @include space-around;
+  &__nav {
+    &-bar {
+      color: $white;
+      @include space-around;
+      list-style-type: none;
+      padding: 0rem;
+      @include tablet {
+        justify-content: flex-end;
+        width: max-content;
+        gap: 1rem;
+        margin: 0rem;
+      }
+    }
+    &-link {
+      color: $cloud;
+      &:hover {
+        background-color: $instock-indigo;
+        text-decoration: underline;
+      }
+      &.active {
+        background-color: $instock-black;
+        color: $white;
+      }
+    }
   }
 }
 
