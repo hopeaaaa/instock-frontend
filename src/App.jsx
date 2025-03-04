@@ -2,26 +2,35 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-import WarehousesPage from "./pages/Warehouses/WarehousesPage.jsx";
-import InventoryPage from "./pages/Inventory/InventoryPage.jsx";
+import WarehouseList from "./pages/WarehouseList/WarehousesList.jsx";
+import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails.jsx";
+import WarehouseAdd from "./pages/WarehouseAdd/WarehouseAdd.jsx";
+import WarehouseEdit from "./pages/WarehouseEdit/WarehouseEdit.jsx";
+import InventoryList from "./pages/InventoryList/InventoryList.jsx";
+import InventoryDetails from "./pages/InventoryDetails/InventoryDetails.jsx";
+import InventoryAdd from "./pages/InventoryAdd/InventoryAdd.jsx";
+import InventoryEdit from "./pages/InventoryEdit/InventoryEdit.jsx";
 
 function App() {
-<<<<<<< HEAD
   return (
     <BrowserRouter>
       <Header />
 
       <Routes>
-        <Route path="/" element={<WarehousesPage />} />
-        <Route path="/inventory" element={<InventoryPage />} />
+        <Route path="/" element={<WarehouseList />} />
+        <Route path="/:id" element={<WarehouseDetails />} />
+        <Route path="/add" element={<WarehouseAdd />} />
+        <Route path="/:id/edit" element={<WarehouseEdit />} />
+        <Route path="/inventory" element={<InventoryList />} />
+        <Route path="/inventory/:id" element={<InventoryDetails />} />
+        <Route path="/inventory/add" element={<InventoryAdd />} />
+        <Route path="/inventory/:id/edit" element={<InventoryEdit />} />
+        <Route path="/" element={<InventoryList />} />
       </Routes>
 
       <Footer />
     </BrowserRouter>
   );
-=======
-  return <p>hello</p>;
->>>>>>> develop
 }
 
 export default App;
