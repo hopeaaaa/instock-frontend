@@ -1,0 +1,23 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  background-color: $graphite;
+  display: flex;
+  flex-direction: column;
+  &__hero-image {
+    margin: 0rem auto;
+  }
+  &__instock {
+    @include dimensions(max-content, 100%);
+    justify-content: center;
+  }
+  &__redirect {
+    color: $white;
+    @include space-around;
+  }
+}
+
+a {
+  text-decoration: none;
+}
