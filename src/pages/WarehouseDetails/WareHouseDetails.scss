@@ -3,6 +3,10 @@
 
 .warehouse-details {
   border: 1px $cloud solid;
+  margin: 0rem 1rem;
+  background-color: $white;
+  position: relative;
+  bottom: 80px;
   &__header {
     display: flex;
     align-items: center;
@@ -35,16 +39,55 @@
   &__location {
     padding: 1rem;
   }
+  &__inventory {
+    padding: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    border-bottom: 1px $cloud solid;
+  }
+  &__label--mobile {
+    width: max-content;
+  }
+  &__item {
+    order: 0;
+    &-info {
+      width: 50%;
+    }
+    &-input {
+      width: max-content;
+    }
+    &-redirect {
+      display: flex;
+      gap: 0.5rem;
+      width: max-content;
+    }
+  }
   &__contact {
     padding: 1rem;
     display: flex;
-    justify-content: space-between;
+    &-person {
+      width: 50%;
+    }
   }
   &__input {
     margin: 0rem;
   }
   &__item-redirect {
     display: flex;
+  }
+  &__category {
+    order: 2;
+  }
+  &__actions {
+    @include space-between;
+    width: 100%;
+    order: 4;
+  }
+  &__status {
+    order: 1;
+  }
+  &__quantity {
+    order: 3;
   }
 }
 
