@@ -1,5 +1,10 @@
+import InventoryDetail from "../../components/InventoryDetails/InventoryDetail";
+
+
 function InventoryDetails() {
-  return <div></div>;
+  return (
+    <InventoryDetail/>
+  );
 }
 
 export default InventoryDetails;
