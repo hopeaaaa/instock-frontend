@@ -34,7 +34,7 @@ function InventoryList() {
       {inventoryList.map((item) => (
         <div className="inventory-list__item-wrapper">
           <div className="inventory-list__item">
-            <div className="inventory-list_details">
+            <div className="inventory-list__details">
               <div className="inventory-list__detail">
                 <h3 className="inventory-list__label">Inventory Item</h3>
                 <ul>
@@ -50,7 +50,7 @@ function InventoryList() {
                 </ul>
               </div>
             </div>
-            <div className="inventory-list_warehouse-info">
+            <div className="inventory-list__details">
               <div>
                 <h3 className="inventory-list__label">Status</h3>
                 <ul>
@@ -78,7 +78,7 @@ function InventoryList() {
               </div>
             </div>
           </div>
-          <div className="inventory-list__actions--hidden">
+          <div className="inventory-list__hidden">
             <span className="inventory-list__icon">image</span>
             <span className="inventory-list__icon">image</span>
           </div>

@@ -39,6 +39,13 @@ h3 {
     display: flex;
   }
 
+  &__details {
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
   &__detail {
     @include tablet {
       display: flex;
@@ -55,7 +62,10 @@ h3 {
     }
   }
 
-  &__icon {
+  &__hidden {
+    display: flex;
+    justify-content: space-between;
+
     @include tablet {
       display: none;
     }
