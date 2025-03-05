@@ -1,0 +1,63 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font" as *;
+@use "../../styles/partials/resets" as *;
+
+h3 {
+  @include tablet {
+    display: none;
+  }
+}
+
+.inventory-list {
+  &__header {
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__subheaders {
+    display: none;
+
+    @include tablet {
+      display: flex;
+    }
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__detail {
+    @include tablet {
+      display: flex;
+    }
+  }
+
+  &__actions {
+    display: none;
+
+    @include tablet {
+      display: contents;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__icon {
+    @include tablet {
+      display: none;
+    }
+  }
+}
