@@ -1,0 +1,140 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font" as *;
+@use "../../styles/partials/resets" as *;
+
+.inventory-list {
+  &__header {
+    padding: 1.5rem 1rem 1.5rem 1rem;
+
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    padding-bottom: 1rem;
+  }
+
+  &__search-input {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    border-radius: 1.25rem;
+    height: 2.25rem;
+    border: 1px solid $light-grey;
+
+    @include tablet {
+      height: 2.375rem;
+    }
+  }
+
+  &__add-button {
+    width: 100%;
+    border-radius: 1.25rem;
+    height: 2.25rem;
+    background-color: $instock-indigo;
+    color: $white;
+
+    @include tablet {
+      height: 2.375rem;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__column-header {
+    @include tablet {
+      flex-grow: 1;
+      flex-basis: 16.7%;
+      max-width: 16.7%;
+    }
+  }
+
+  &__item {
+    display: flex;
+    padding: 1rem;
+    justify-content: space-evenly;
+    &--subheader {
+      display: none;
+      @include tablet {
+        display: flex;
+      }
+    }
+  }
+
+  &__details {
+    flex-grow: 1;
+    flex-basis: 50%;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      flex-grow: 1;
+      flex-basis: 100%;
+      justify-content: flex-start;
+      width: 100%;
+    }
+  }
+
+  &__detail {
+    @include tablet {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  &__label {
+    font-family: "Titillium Web", sans-serif;
+    @include text-style(0.6875rem, 400, 1rem);
+    color: $slate;
+
+    @include tablet {
+      display: none;
+      @include text-style(1rem, 400, 1.125rem);
+    }
+  }
+
+  &__item-name {
+    font-family: "Titillium Web", sans-serif;
+  }
+
+  &__text {
+    font-family: "Titillium Web", sans-serif;
+  }
+
+  &__status {
+    font-family: "Titillium Web", sans-serif;
+  }
+
+  &__actions {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-basis: 16.7%;
+      max-width: 16.7%;
+    }
+  }
+
+  &__hidden {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+
+    @include tablet {
+      display: none;
+    }
+  }
+}
