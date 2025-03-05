@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0rem 1rem;
+    padding: 1rem 1rem;
     border-bottom: 1px $cloud solid;
     &-left {
       display: flex;
@@ -52,6 +52,7 @@
     order: 0;
     &-info {
       width: 50%;
+      padding-bottom: 1rem;
     }
     &-input {
       width: max-content;
