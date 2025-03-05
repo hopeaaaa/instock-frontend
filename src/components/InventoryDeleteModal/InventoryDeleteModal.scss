@@ -1,0 +1,19 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.modal-overlay{
+    background-color: $instock-black;
+    opacity: 70%;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.delete-modal{
+    @include flex-center;
+    background-color: $white;
+    // color:;
+    padding: 1rem;
+    &__header{
+
+    }
+}
