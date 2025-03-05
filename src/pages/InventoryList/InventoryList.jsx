@@ -27,13 +27,23 @@ function InventoryList() {
           <button className="inventory-list__add-button">+ Add New Item</button>
         </div>
       </div>
-      <div className="inventory-list__subheaders">
-        <h4 className="inventory-list__column-header">Inventory Item</h4>
-        <h4 className="inventory-list__column-header">Category</h4>
-        <h4 className="inventory-list__column-header">Status</h4>
-        <h4 className="inventory-list__column-header">QTY</h4>
-        <h4 className="inventory-list__column-header">Warehouse</h4>
+      <div className="inventory-list__item-wrapper">
+      <div className="inventory-list__item inventory-list__item--subheader">
+      <div className="inventory-list__details">
+        
+      <div className="inventory-list__detail"> <h4 className="inventory-list__column-header">Inventory Item</h4></div>
+      <div className="inventory-list__detail">   <h4 className="inventory-list__column-header">Category</h4></div>
+      </div>
+      <div className="inventory-list__details">
+      <div className="inventory-list__detail"><h4 className="inventory-list__column-header">Status</h4></div>
+      <div className="inventory-list__detail"><h4 className="inventory-list__column-header">QTY</h4></div>
+      <div className="inventory-list__detail"><h4 className="inventory-list__column-header">Warehouse</h4></div>
+      </div>
+      <div className="inventory-list__actions">
         <h4 className="inventory-list__column-header">Actions</h4>
+        </div>
+      </div>
+        
       </div>
       {inventoryList.map((item) => (
         <div className="inventory-list__item-wrapper">
