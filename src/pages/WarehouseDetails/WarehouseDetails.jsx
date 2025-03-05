@@ -4,6 +4,7 @@ import EditButton from "../../assets/icons/edit-white-24px.svg";
 import RightArrow from "../../assets/icons/chevron_right-24px.svg";
 import EditItem from "../../assets/icons/edit-24px.svg";
 import DeleteItem from "../../assets/icons/delete_outline-24px.svg";
+import SortImage from "../../assets/icons/sort-24px.svg";
 import "./WarehouseDetails.scss";
 
 function WarehouseDetails() {
@@ -26,6 +27,7 @@ function WarehouseDetails() {
             alt="Edit Warehouse Details"
             className="warehouse-details__edit-image"
           />
+          <p className="warehouse-details__edit-text">Edit</p>
         </div>
       </div>
       <div className="warehouse-details__information">
@@ -52,6 +54,43 @@ function WarehouseDetails() {
           </div>
         </div>
       </div>
+      <ul className="warehouse-details__tablet-filter">
+        <li className="warehouse-details__tablet-label">
+          <h5 className="warehouse-details__tablet-name">INVENTORY ITEM</h5>
+          <img
+            src={SortImage}
+            alt="Image to Filter based on Name"
+            className="warehouse-details__sort-image"
+          />
+        </li>
+        <li className="warehouse-details__tablet-label">
+          <h5 className="warehouse-details__tablet-name">CATEGORY</h5>
+          <img
+            src={SortImage}
+            alt="Image to Filter based on Category"
+            className="warehouse-details__sort-image"
+          />
+        </li>
+        <li className="warehouse-details__tablet-label">
+          <h5 className="warehouse-details__tablet-name">STATUS</h5>
+          <img
+            src={SortImage}
+            alt="Image to Filter based on Inventory Status"
+            className="warehouse-details__sort-image"
+          />
+        </li>
+        <li className="warehouse-details__tablet-label">
+          <h5 className="warehouse-details__tablet-name">QUANTITY</h5>
+          <img
+            src={SortImage}
+            alt="Image to Filter based on Inventory Quantity"
+            className="warehouse-details__sort-image"
+          />
+        </li>
+        <li className="warehouse-details__tablet-label">
+          <h5 className="warehouse-details__tablet-name">ACTIONS</h5>
+        </li>
+      </ul>
       {/* map function somewhere here */}
       <div className="warehouse-details__inventory">
         <div className="warehouse-details__item warehouse-details__item-info">
