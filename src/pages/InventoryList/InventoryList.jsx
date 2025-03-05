@@ -1,8 +1,17 @@
+import InventoryDeleteModal from "../../components/InventoryDeleteModal/InventoryDeleteModal";
 import "./InventoryList.scss";
 import { useEffect, useState } from "react";
 
 function InventoryList() {
   const [inventoryList, setInventoryList] = useState([]);
+  const [showDelete, setShowDelete] = useState(false);
+  const [clickedItem, setClickedItem] = useState(); 
+
+  const handleDeleteClick = (item)=>{
+    setClickedItem(item);
+    setShowDelete(!showDelete);
+  }
+
 
   function fetchInventory() {
     fetch("/inventory.json")
@@ -17,6 +26,7 @@ function InventoryList() {
 
   return (
     <>
+    {showDelete && <InventoryDeleteModal setShowDelete={setShowDelete} item={clickedItem}/>}
       <div className="inventory-list__header">
         <h1 className="inventory-list__title">Inventory</h1>
         <div className="inventory-list__cta">
@@ -30,7 +40,6 @@ function InventoryList() {
       <div className="inventory-list__item-wrapper">
       <div className="inventory-list__item inventory-list__item--subheader">
       <div className="inventory-list__details">
-        
       <div className="inventory-list__detail"> <h4 className="inventory-list__column-header">Inventory Item</h4></div>
       <div className="inventory-list__detail">   <h4 className="inventory-list__column-header">Category</h4></div>
       </div>
@@ -88,6 +97,7 @@ function InventoryList() {
             <div className="inventory-list__actions">
               <h3 className="inventory-list__label">Actions</h3>
               <div className="inventory-list__action-icons">
+               <button onClick={()=>handleDeleteClick(item)}>
                 <svg
                   className="inventory-list__icon"
                   width="24"
@@ -101,6 +111,7 @@ function InventoryList() {
                     fill="#C94515"
                   />
                 </svg>
+                </button>
                 <svg
                   className="inventory-list__icon"
                   width="24"
@@ -119,6 +130,7 @@ function InventoryList() {
           </div>
           <div className="inventory-list__hidden">
             <svg
+              onClick={()=>{handleDeleteClick(item);}}
               className="inventory-list__icon"
               width="24"
               height="24"

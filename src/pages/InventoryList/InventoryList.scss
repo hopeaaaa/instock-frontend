@@ -121,7 +121,7 @@
 
   &__actions {
     display: none;
-
+    cursor: pointer;
     @include tablet {
       display: flex;
       flex-direction: column;
