@@ -1,7 +1,7 @@
 import "./InventoryListComponent.scss";
 import { useEffect, useState } from "react";
 
-function InventoryListComponent() {
+function InventoryListComponent({handleDeleteClick}) {
   const [inventoryList, setInventoryList] = useState([]);
 
   function fetchInventory() {
@@ -108,6 +108,7 @@ function InventoryListComponent() {
             <div className="inventory-list__actions">
               <h3 className="inventory-list__label">Actions</h3>
               <div className="inventory-list__action-icons">
+                <button onClick={handleDeleteClick}>
                 <svg
                   className="inventory-list__icon"
                   width="24"
@@ -121,6 +122,7 @@ function InventoryListComponent() {
                     fill="#C94515"
                   />
                 </svg>
+                </button>
                 <svg
                   className="inventory-list__icon"
                   width="24"
@@ -138,6 +140,7 @@ function InventoryListComponent() {
             </div>
           </div>
           <div className="inventory-list__hidden">
+          <button onClick={handleDeleteClick}>
             <svg
               className="inventory-list__icon"
               width="24"
@@ -151,6 +154,7 @@ function InventoryListComponent() {
                 fill="#C94515"
               />
             </svg>
+            </button>
             <svg
               className="inventory-list__icon"
               width="24"
