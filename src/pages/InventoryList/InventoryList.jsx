@@ -1,5 +1,8 @@
+import "./InventoryList.scss";
+import InventoryListComponent from "../../components/InventoryListComponent/InventoryListComponent.jsx";
+
 function InventoryList() {
-  return <div>test</div>;
+  return <InventoryListComponent />;
 }
 
 export default InventoryList;
