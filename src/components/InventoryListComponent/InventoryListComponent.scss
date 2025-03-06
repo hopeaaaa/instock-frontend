@@ -4,6 +4,15 @@
 @use "../../styles/partials/resets" as *;
 
 .inventory-list {
+  background-color: $white;
+  width: calc(100% - 1rem);
+  box-shadow: 0 2px 5px 0 #13182C1A;
+  border-radius: .1875rem;
+  margin: auto;
+  @include tablet{
+    width: calc(100% - 2rem);
+    max-width: 1020px;
+  }
   &__header {
     padding: 1.5rem 1rem 1.5rem 1rem;
 
