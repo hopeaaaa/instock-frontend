@@ -7,38 +7,122 @@
     width: calc(100% - 1.5rem);
     margin: auto;
     color: $instock-black;
+    background-color: $white;
     &__header-container{
         border-bottom: 1px solid $cloud;
     }
     &__section{
         padding-bottom: 1rem;
+        @include tablet{
+            padding-bottom: 1.5rem;
+        }
         &--column{
             display: flex;
             gap: 40%;
             padding-bottom: 0;
+            @include tablet{
+                gap: 100%;
+            }
         }
     }
     &__header{
         display: flex;
+        flex-direction: row;
+        align-items: center;
         justify-content: space-between;
-        padding: 1rem;
-        
+        padding: 2rem 1rem;
         font-size: .75rem;
         font-weight: 600;
+        &--divider{
+            display: flex;
+            gap: .5rem;
+        }
+        @include tablet{
+            padding: 2rem 2rem;
+        }
+        @include desktop{
+            padding: 2rem 2.5rem;
+        }
     }
     &__body{
         padding: 1rem 1.5rem;
         color: $instock-black;
+        @include tablet{
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+        }
     }
     &__title{
         font-size: .6875rem;
         font-weight: 600;
         line-height: 16px;
         color: $slate;
+        @include tablet{
+            font-size: .75rem;
+            line-height: 1.125rem;
+        }
     }
     &__description{
         font-size: .8125rem;
         font-weight: 400;
         line-height: 1.2rem;
+        @include tablet{
+            font-size: 14px;
+            line-height: 22px;
+        }
+        &--in-stock{
+            background-color: #15846307;
+            border-radius: 1.25rem;
+            padding: .25rem .5rem;
+            width: max-content;
+            color: $green;
+            font-weight: 600;
+        }
+        &--out-of-stock{
+            background-color: #C9451507;
+            border-radius: 1.25rem;
+            padding: .25rem .5rem;
+            width: max-content;
+            color: $red;
+            font-weight: 600;
+        }
     }
+    &__edit-button{
+        background-color: $instock-indigo;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        width: 36px;
+        height: 36px;
+        @include tablet{
+            width: auto;
+            padding: 8px 16px;
+            gap: .625rem;
+        }
+        &--icon{
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+        }
+        &--text{
+            display: none;
+            color: $white;
+            @include tablet{
+                display: block;
+            }
+        }
+    }
+    &__item-name{
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    &__separation-container{
+        @include tablet{
+            border-left: 1px solid $cloud;
+            padding-left: 2.5rem;
+        }
+    }
+
 }
