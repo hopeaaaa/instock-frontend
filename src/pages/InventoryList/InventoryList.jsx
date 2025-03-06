@@ -5,18 +5,16 @@ import { useState, useEffect } from "react";
 function InventoryList() {
   // const [inventoryList, setInventoryList] = useState([]);
   const [showDelete, setShowDelete] = useState(false);
-  const [clickedItem, setClickedItem] = useState(); 
+  const [clickedItem, setClickedItem] = useState(null); 
 
   const handleDeleteClick = (item)=>{
     setClickedItem(item);
     setShowDelete(!showDelete);
   }
-
-
- 
+console.log(clickedItem)
   return (
     <>
-    {showDelete && <InventoryDeleteModal setShowDelete={setShowDelete} item={clickedItem}/>}
+    {showDelete && clickedItem && <InventoryDeleteModal setShowDelete={setShowDelete} item={clickedItem}/>}
     <InventoryListComponent handleDeleteClick={handleDeleteClick}/>
     </>
       );
