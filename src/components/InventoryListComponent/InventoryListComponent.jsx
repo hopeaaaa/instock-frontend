@@ -1,15 +1,23 @@
 import "./InventoryListComponent.scss";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
-function InventoryListComponent({handleDeleteClick}) {
+const VITE_SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
+const VITE_SERVER_PORT = import.meta.env.VITE_SERVER_PORT;
+
+function InventoryListComponent({ handleDeleteClick }) {
   const [inventoryList, setInventoryList] = useState([]);
 
-  function fetchInventory() {
-    fetch("/inventory.json")
-      .then((response) => response.json())
-      .then((data) => setInventoryList(data))
-      .catch((error) => console.log(error));
-  }
+  const fetchInventory = async () => {
+    try {
+      const response = await axios.get(
+        `${VITE_SERVER_BASE_URL}${VITE_SERVER_PORT}/inventory`
+      );
+      setInventoryList(response.data);
+    } catch (error) {
+      console.log("Error fetching inventory:", error);
+    }
+  };
 
   useEffect(() => {
     fetchInventory();
@@ -24,7 +32,12 @@ function InventoryListComponent({handleDeleteClick}) {
             className="inventory-list__search-input"
             placeholder="Search"
           />
-          <button className="inventory-list__add-button">+ Add New Item</button>
+          <button
+            onClick={() => console.log("clicked")}
+            className="inventory-list__add-button"
+          >
+            + Add New Item
+          </button>
         </div>
       </div>
       <div className="inventory-list__item-wrapper">
@@ -32,26 +45,110 @@ function InventoryListComponent({handleDeleteClick}) {
           <div className="inventory-list__details">
             <div className="inventory-list__detail">
               {" "}
-              <h4 className="inventory-list__column-header">Inventory Item</h4>
+              <h4 className="inventory-list__column-header">
+                INVENTORY ITEM{" "}
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 5.83L15.17 9L16.58 7.59L12 3L7.41003 7.59L8.83003 9L12 5.83ZM12 18.17L8.83003 15L7.42003 16.41L12 21L16.59 16.41L15.17 15L12 18.17Z"
+                    fill="#5C667E"
+                  />
+                </svg>
+              </h4>
             </div>
             <div className="inventory-list__detail">
               {" "}
-              <h4 className="inventory-list__column-header">Category</h4>
+              <h4 className="inventory-list__column-header">
+                CATEGORY{" "}
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 5.83L15.17 9L16.58 7.59L12 3L7.41003 7.59L8.83003 9L12 5.83ZM12 18.17L8.83003 15L7.42003 16.41L12 21L16.59 16.41L15.17 15L12 18.17Z"
+                    fill="#5C667E"
+                  />
+                </svg>
+              </h4>
             </div>
           </div>
           <div className="inventory-list__details">
             <div className="inventory-list__detail">
-              <h4 className="inventory-list__column-header">Status</h4>
+              <h4 className="inventory-list__column-header">
+                STATUS{" "}
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 5.83L15.17 9L16.58 7.59L12 3L7.41003 7.59L8.83003 9L12 5.83ZM12 18.17L8.83003 15L7.42003 16.41L12 21L16.59 16.41L15.17 15L12 18.17Z"
+                    fill="#5C667E"
+                  />
+                </svg>
+              </h4>
             </div>
             <div className="inventory-list__detail">
-              <h4 className="inventory-list__column-header">QTY</h4>
+              <h4 className="inventory-list__column-header">
+                QTY{" "}
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 5.83L15.17 9L16.58 7.59L12 3L7.41003 7.59L8.83003 9L12 5.83ZM12 18.17L8.83003 15L7.42003 16.41L12 21L16.59 16.41L15.17 15L12 18.17Z"
+                    fill="#5C667E"
+                  />
+                </svg>
+              </h4>
             </div>
             <div className="inventory-list__detail">
-              <h4 className="inventory-list__column-header">Warehouse</h4>
+              <h4 className="inventory-list__column-header">
+                WAREHOUSE{" "}
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 5.83L15.17 9L16.58 7.59L12 3L7.41003 7.59L8.83003 9L12 5.83ZM12 18.17L8.83003 15L7.42003 16.41L12 21L16.59 16.41L15.17 15L12 18.17Z"
+                    fill="#5C667E"
+                  />
+                </svg>
+              </h4>
             </div>
           </div>
           <div className="inventory-list__actions">
-            <h4 className="inventory-list__column-header">Actions</h4>
+            <h4 className="inventory-list__column-header">
+              ACTIONS{" "}
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 5.83L15.17 9L16.58 7.59L12 3L7.41003 7.59L8.83003 9L12 5.83ZM12 18.17L8.83003 15L7.42003 16.41L12 21L16.59 16.41L15.17 15L12 18.17Z"
+                  fill="#5C667E"
+                />
+              </svg>
+            </h4>
           </div>
         </div>
       </div>
@@ -61,15 +158,31 @@ function InventoryListComponent({handleDeleteClick}) {
           <div className="inventory-list__item">
             <div className="inventory-list__details">
               <div className="inventory-list__detail">
-                <h3 className="inventory-list__label">Inventory Item</h3>
+                <h3 className="inventory-list__label">INVENTORY ITEM</h3>
                 <ul>
-                  <li className="inventory-list__item-name">
+                  <li
+                    onClick={() => console.log("clicked")}
+                    className="inventory-list__item-name"
+                  >
                     {item.item_name}
+
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.99997 6L8.58997 7.41L13.17 12L8.58997 16.59L9.99997 18L16 12L9.99997 6Z"
+                        fill="#2E66E6"
+                      />
+                    </svg>
                   </li>
                 </ul>
               </div>
               <div className="inventory-list__detail">
-                <h3 className="inventory-list__label">Category</h3>
+                <h3 className="inventory-list__label">CATEGORY</h3>
                 <ul>
                   <li className="inventory-list__text">{item.category}</li>
                 </ul>
@@ -77,7 +190,7 @@ function InventoryListComponent({handleDeleteClick}) {
             </div>
             <div className="inventory-list__details">
               <div className="inventory-list__detail">
-                <h3 className="inventory-list__label">Status</h3>
+                <h3 className="inventory-list__label">STATUS</h3>
                 <ul>
                   <li className="inventory-list__status">{item.status}</li>
                 </ul>
@@ -108,22 +221,23 @@ function InventoryListComponent({handleDeleteClick}) {
             <div className="inventory-list__actions">
               <h3 className="inventory-list__label">Actions</h3>
               <div className="inventory-list__action-icons">
-                <button onClick={()=>handleDeleteClick(item)}>
-                <svg
-                  className="inventory-list__icon"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM8 9H16V19H8V9ZM15.5 4L14.5 3H9.5L8.5 4H5V6H19V4H15.5Z"
-                    fill="#C94515"
-                  />
-                </svg>
+                <button onClick={() => handleDeleteClick(item)}>
+                  <svg
+                    className="inventory-list__icon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM8 9H16V19H8V9ZM15.5 4L14.5 3H9.5L8.5 4H5V6H19V4H15.5Z"
+                      fill="#C94515"
+                    />
+                  </svg>
                 </button>
                 <svg
+                  onClick={() => console.log("clicked")}
                   className="inventory-list__icon"
                   width="24"
                   height="24"
@@ -140,22 +254,23 @@ function InventoryListComponent({handleDeleteClick}) {
             </div>
           </div>
           <div className="inventory-list__hidden">
-          <button onClick={()=>handleDeleteClick(item)}>
-            <svg
-              className="inventory-list__icon"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM8 9H16V19H8V9ZM15.5 4L14.5 3H9.5L8.5 4H5V6H19V4H15.5Z"
-                fill="#C94515"
-              />
-            </svg>
+            <button onClick={() => handleDeleteClick(item)}>
+              <svg
+                className="inventory-list__icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM8 9H16V19H8V9ZM15.5 4L14.5 3H9.5L8.5 4H5V6H19V4H15.5Z"
+                  fill="#C94515"
+                />
+              </svg>
             </button>
             <svg
+              onClick={() => console.log("clicked")}
               className="inventory-list__icon"
               width="24"
               height="24"

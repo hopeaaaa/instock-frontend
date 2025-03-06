@@ -6,10 +6,10 @@
 .inventory-list {
   background-color: $white;
   width: calc(100% - 1rem);
-  box-shadow: 0 2px 5px 0 #13182C1A;
-  border-radius: .1875rem;
+  box-shadow: 0 2px 5px 0 #13182c1a;
+  border-radius: 0.1875rem;
   margin: auto;
-  @include tablet{
+  @include tablet {
     width: calc(100% - 2rem);
     max-width: 1020px;
   }
@@ -64,16 +64,25 @@
     @include tablet {
       flex-grow: 1;
       flex-basis: 16.7%;
-      max-width: 16.7%;
+      display: flex;
+      align-items: center;
+      gap: 0.125rem;
     }
+  }
+
+  &__horizontal-line {
+    border: 1px solid $light-grey;
   }
 
   &__item {
     display: flex;
     padding: 1rem;
     justify-content: space-evenly;
+
     &--subheader {
       display: none;
+      background-color: $light-grey;
+
       @include tablet {
         display: flex;
       }
@@ -83,6 +92,7 @@
   &__details {
     flex-grow: 1;
     flex-basis: 50%;
+    align-items: center;
 
     @include tablet {
       display: flex;
@@ -104,25 +114,45 @@
 
   &__label {
     font-family: "Titillium Web", sans-serif;
-    @include text-style(0.6875rem, 400, 1rem);
+    @include text-style(0.6875rem, 600, 1rem);
     color: $slate;
+    margin-bottom: 0.5rem;
 
     @include tablet {
       display: none;
-      @include text-style(1rem, 400, 1.125rem);
+      @include text-style(1rem, 600, 1.125rem);
     }
   }
 
   &__item-name {
     font-family: "Titillium Web", sans-serif;
+    @include text-style(0.6875rem, 400, 1rem);
+    color: $instock-indigo;
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+
+    @include tablet {
+      @include text-style(1rem, 400, 1.125rem);
+    }
   }
 
   &__text {
     font-family: "Titillium Web", sans-serif;
+    @include text-style(0.6875rem, 400, 1rem);
+
+    @include tablet {
+      @include text-style(1rem, 400, 1.125rem);
+    }
   }
 
   &__status {
     font-family: "Titillium Web", sans-serif;
+    @include text-style(0.6875rem, 400, 1rem);
+
+    @include tablet {
+      @include text-style(1rem, 400, 1.125rem);
+    }
   }
 
   &__actions {
