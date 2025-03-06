@@ -131,6 +131,7 @@
     display: flex;
     align-items: center;
     gap: 0.3125rem;
+    padding-bottom: 1rem;
 
     @include tablet {
       @include text-style(1rem, 400, 1.125rem);
@@ -140,6 +141,7 @@
   &__text {
     font-family: "Titillium Web", sans-serif;
     @include text-style(0.6875rem, 400, 1rem);
+    padding-bottom: 1rem;
 
     @include tablet {
       @include text-style(1rem, 400, 1.125rem);
@@ -149,6 +151,7 @@
   &__status {
     font-family: "Titillium Web", sans-serif;
     @include text-style(0.6875rem, 400, 1rem);
+    padding-bottom: 1rem;
 
     @include tablet {
       @include text-style(1rem, 400, 1.125rem);

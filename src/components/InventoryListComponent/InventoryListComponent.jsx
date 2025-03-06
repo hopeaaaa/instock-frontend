@@ -1,5 +1,6 @@
 import "./InventoryListComponent.scss";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const VITE_SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
@@ -11,7 +12,7 @@ function InventoryListComponent({ handleDeleteClick }) {
   const fetchInventory = async () => {
     try {
       const response = await axios.get(
-        `${VITE_SERVER_BASE_URL}${VITE_SERVER_PORT}/inventory`
+        `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory`
       );
       setInventoryList(response.data);
     } catch (error) {
@@ -160,24 +161,25 @@ function InventoryListComponent({ handleDeleteClick }) {
               <div className="inventory-list__detail">
                 <h3 className="inventory-list__label">INVENTORY ITEM</h3>
                 <ul>
-                  <li
-                    onClick={() => console.log("clicked")}
-                    className="inventory-list__item-name"
-                  >
-                    {item.item_name}
-
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                  <li>
+                    <Link
+                      to={`/inventory/${item.id}`}
+                      className="inventory-list__item-name"
                     >
-                      <path
-                        d="M9.99997 6L8.58997 7.41L13.17 12L8.58997 16.59L9.99997 18L16 12L9.99997 6Z"
-                        fill="#2E66E6"
-                      />
-                    </svg>
+                      {item.item_name}
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.99997 6L8.58997 7.41L13.17 12L8.58997 16.59L9.99997 18L16 12L9.99997 6Z"
+                          fill="#2E66E6"
+                        />
+                      </svg>
+                    </Link>
                   </li>
                 </ul>
               </div>
