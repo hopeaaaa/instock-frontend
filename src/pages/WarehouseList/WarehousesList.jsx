@@ -1,5 +1,8 @@
+import InventoryDeleteModal from "../../components/InventoryDeleteModal/InventoryDeleteModal";
+
+
 function WarehouseList() {
-  return <div>test2</div>;
+  return <InventoryDeleteModal/>;
 }
 
 export default WarehouseList;
