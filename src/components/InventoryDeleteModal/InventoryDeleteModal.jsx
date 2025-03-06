@@ -1,11 +1,24 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import './InventoryDeleteModal.scss';
 
 const InventoryDeleteModal = ({item, setShowDelete}) => {
-
-   const onDelete = ()=>{
-        
+    const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
+    const PORT = import.meta.env.VITE_SERVER_PORT;
+    console.log
+   const onDelete = async ()=>{
+    try{
+        const path = `${BASE_URL}:${PORT}/inventory/${item.id}`
+        const response = await axios.delete(path);
+        console.log(response)
+        if(response.status == 204){
+            setShowDelete(false)
+        }
+    }catch(error){
+        console.error('Unable to delete:', error);
+        throw error;
+    } 
    }
 
     return (

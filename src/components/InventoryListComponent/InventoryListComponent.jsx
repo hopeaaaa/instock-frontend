@@ -108,7 +108,7 @@ function InventoryListComponent({handleDeleteClick}) {
             <div className="inventory-list__actions">
               <h3 className="inventory-list__label">Actions</h3>
               <div className="inventory-list__action-icons">
-                <button onClick={handleDeleteClick}>
+                <button onClick={()=>handleDeleteClick(item)}>
                 <svg
                   className="inventory-list__icon"
                   width="24"
@@ -140,7 +140,7 @@ function InventoryListComponent({handleDeleteClick}) {
             </div>
           </div>
           <div className="inventory-list__hidden">
-          <button onClick={handleDeleteClick}>
+          <button onClick={()=>handleDeleteClick(item)}>
             <svg
               className="inventory-list__icon"
               width="24"
