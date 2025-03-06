@@ -1,0 +1,23 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables";
+@use "../../styles/partials/font";
+
+.footer {
+  @include flex-center;
+  background-color: $light-grey;
+
+  &__text {
+    color: $slate;
+    margin: 2.5rem 0;
+    font-family: "Titillium Web";
+    @include text-style(0.6875rem, 400, 1rem);
+
+    @include tablet {
+      @include text-style(0.75rem, 400, 1.125rem);
+    }
+
+    @include desktop {
+      margin: 3rem 0;
+    }
+  }
+}
