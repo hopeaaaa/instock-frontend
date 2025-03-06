@@ -4,9 +4,10 @@ import axios from "axios";
 import './InventoryDeleteModal.scss';
 
 const InventoryDeleteModal = ({item, setShowDelete}) => {
+
     const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
     const PORT = import.meta.env.VITE_SERVER_PORT;
-    console.log
+    
    const onDelete = async ()=>{
     try{
         const path = `${BASE_URL}:${PORT}/inventory/${item.id}`
