@@ -47,10 +47,14 @@ function InventoryEditItem() {
                 <h2 className='edit-form__headers'>Item Availability</h2>
                 <label className='edit-form__title'>Status</label>
                 <formfield className='edit-form__radio-group'> 
-                    <input id="in-stock" type="radio" name="status" value="in-stock" className='edit-form__input edit-form__input--radio'/> 
-                    <label for="in-stock" className='edit-form__sub-title'>In Stock</label> 
-                    <input id="out-of-stock" type="radio" name="status" value="out-of-stock" className='edit-form__input edit-form__input--radio'/>
-                    <label for="out-of-stock" className='edit-form__sub-title'> Out of stock</label>
+                    <div className='edit-form__radio-group--separation'>
+                        <input id="in-stock" type="radio" name="status" value="in-stock" className='edit-form__input edit-form__input--radio'/> 
+                        <label for="in-stock" className='edit-form__sub-title'>In Stock</label> 
+                    </div>
+                    <div className='edit-form__radio-group--separation'>
+                        <input selected id="out-of-stock" type="radio" name="status" value="out-of-stock" className='edit-form__input edit-form__input--radio'/>
+                        <label for="out-of-stock" className='edit-form__sub-title'> Out of stock</label>
+                    </div>
                 </formfield>
 
                 <label for="warehouse" className='edit-form__title'>Warehouse</label>

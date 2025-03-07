@@ -62,5 +62,23 @@
         &--textarea{
             height: 7.5rem;
         }
+        &--radio{
+            width: fit-content;
+        }
+    }
+    &__radio-group{
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        &--separation{
+            display: flex;
+            align-items: center;
+            flex-basis: 50%;
+            flex-grow: 1;
+            gap: .5rem;
+        }
+    }
+    &__sub-title{
+       width: fit-content;
     }
 }
