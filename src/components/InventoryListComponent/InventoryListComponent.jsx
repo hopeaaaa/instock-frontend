@@ -22,7 +22,7 @@ function InventoryListComponent({ handleDeleteClick }) {
 
   useEffect(() => {
     fetchInventory();
-  }, []);
+  }, [inventoryList]);
 
   return (
     <div className="inventory-list">

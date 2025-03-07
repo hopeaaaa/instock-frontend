@@ -7,13 +7,29 @@ import WarehouseInfo from "../../components/WarehouseInfo/WarehouseInfo.jsx";
 import "./WarehouseDetails.scss";
 import { useParams } from "react-router-dom";
 import WarehouseInventory from "../../components/WarehouseInventory/WarehouseInventory.jsx";
+import { useEffect, useState } from "react";
+import InventoryDeleteModal from "../../components/InventoryDeleteModal/InventoryDeleteModal.jsx";
 
 function WarehouseDetails({ baseUrl, PORT }) {
   const id = useParams().id;
+    const [showDelete, setShowDelete] = useState(false);
+    const [clickedItem, setClickedItem] = useState(null);
+  
+    const handleDeleteClick = (item) => {
+      setClickedItem(item);
+      setShowDelete(!showDelete);
+    };
+
   return (
     <div className="warehouse-details">
+       {showDelete && clickedItem && (
+        <InventoryDeleteModal
+          setShowDelete={setShowDelete}
+          item={clickedItem}
+        />
+      )}
       <WarehouseInfo baseUrl={baseUrl} PORT={PORT} id={id} />
-      <WarehouseInventory baseUrl={baseUrl} PORT={PORT} id={id} />
+      <WarehouseInventory baseUrl={baseUrl} PORT={PORT} id={id} handleDeleteClick={handleDeleteClick}/>
     </div>
   );
 }
