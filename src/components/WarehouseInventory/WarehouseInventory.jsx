@@ -84,12 +84,12 @@ function WarehouseInventory({ baseUrl, PORT, id, handleDeleteClick, inventories 
 
             <div className="warehouse-details__actions">
               {/* <Link to={InventoryDeleteModal}> */}
-              <button onClick={()=>handleDeleteClick(item)}>
-              <img
-                src={DeleteItem}
-                alt="Delete this Item Image"
-                className="warehouse-details__item-delete"
-              />
+              <button onClick={() => handleDeleteClick(item)}>
+                <img
+                  src={DeleteItem}
+                  alt="Delete this Item Image"
+                  className="warehouse-details__item-delete"
+                />
               </button>
               {/* </Link> */}
               <Link to={`/inventory/${id}/edit`}>
