@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./WarehouseListComponent.scss";
 
-function WarehouseListComponent({handleDeleteClick}) {
+function WarehouseListComponent({ handleDeleteClick }) {
   const [WarehouseList, setWarehouseList] = useState([]);
   const URL = import.meta.env.VITE_SERVER_BASE_URL;
   const PORT = import.meta.env.VITE_SERVER_PORT;
@@ -11,14 +11,13 @@ function WarehouseListComponent({handleDeleteClick}) {
   async function loadWarehouses() {
     try {
       const response = await axios.get(`${URL}:${PORT}/warehouse`);
-      console.log(response.data);
       setWarehouseList(response.data);
     } catch (error) {}
   }
 
   useEffect(() => {
     loadWarehouses();
-  }, [WarehouseList]);
+  }, []);
 
   return (
     <div className="warehouse-list">
@@ -29,9 +28,11 @@ function WarehouseListComponent({handleDeleteClick}) {
             className="warehouse-list__search-input"
             placeholder="Search..."
           />
-          <button className="warehouse-list__add-button">
-            + Add New Warehouse
-          </button>
+          <Link to="/add">
+            <button className="warehouse-list__add-button">
+              + Add New Warehouse
+            </button>
+          </Link>
         </div>
       </div>
       <div className="warehouse-list__item-wrapper">
@@ -104,7 +105,7 @@ function WarehouseListComponent({handleDeleteClick}) {
               <h3 className="warehouse-list__label">Actions</h3>
               <div className="warehouse-list__action-icons">
                 {/* <Link to={`/${item.id}`}> */}
-                <button onClick={()=>handleDeleteClick(item)}>
+                <button onClick={() => handleDeleteClick(item)}>
                   <svg
                     className="warehouse-list__icon"
                     width="24"
@@ -118,7 +119,7 @@ function WarehouseListComponent({handleDeleteClick}) {
                       fill="#C94515"
                     />
                   </svg>
-                  </button>
+                </button>
                 {/* </Link> */}
                 <Link to={`/${item.id}/warehouse`}>
                   <svg
