@@ -15,14 +15,13 @@ function WarehouseInventory({ baseUrl, PORT, id, handleDeleteClick }) {
         `${baseUrl + PORT}/warehouse/${id}/inventories`
       );
       setInventories(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error(`Unable to retrieve inventories for warehouse ${id}`);
     }
   };
   useEffect(() => {
     getWarehouseInventory();
-  }, [inventories]);
+  }, []);
   return (
     <>
       <ul className="warehouse-details__tablet-filter">
@@ -98,12 +97,12 @@ function WarehouseInventory({ baseUrl, PORT, id, handleDeleteClick }) {
 
             <div className="warehouse-details__actions">
               {/* <Link to={InventoryDeleteModal}> */}
-              <button onClick={()=>handleDeleteClick(item)}>
-              <img
-                src={DeleteItem}
-                alt="Delete this Item Image"
-                className="warehouse-details__item-delete"
-              />
+              <button onClick={() => handleDeleteClick(item)}>
+                <img
+                  src={DeleteItem}
+                  alt="Delete this Item Image"
+                  className="warehouse-details__item-delete"
+                />
               </button>
               {/* </Link> */}
               <Link to={`/inventory/${id}/edit`}>
