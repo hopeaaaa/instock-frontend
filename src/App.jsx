@@ -12,13 +12,19 @@ import InventoryAdd from "./pages/InventoryAdd/InventoryAdd.jsx";
 import InventoryEdit from "./pages/InventoryEdit/InventoryEdit.jsx";
 
 function App() {
+  const baseUrl = `${import.meta.env.VITE_SERVER_BASE_URL}:`;
+  const PORT = import.meta.env.VITE_SERVER_PORT;
+
   return (
     <BrowserRouter>
       <Header />
 
       <Routes>
         <Route path="/" element={<WarehouseList />} />
-        <Route path="/:id" element={<WarehouseDetails />} />
+        <Route
+          path="/:id"
+          element={<WarehouseDetails baseUrl={baseUrl} PORT={PORT} />}
+        />
         <Route path="/add" element={<WarehouseAdd />} />
         <Route path="/:id/edit" element={<WarehouseEdit />} />
         <Route path="/inventory" element={<InventoryList />} />
