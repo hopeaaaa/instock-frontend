@@ -5,13 +5,15 @@
 
 //border: 2px solid blue;
 .warehouse-list {
+  background-color: $white;
+  width: calc(100% - 1rem);
+  max-width: 63.75rem;
+  border-radius: 0.1875rem;
+  box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1019607843);
+  margin: auto;
+
   &__header {
     padding: 1.5rem 1rem 1.5rem 1rem;
-    background-color: $white;
-    width: calc(100% - 2rem);
-    max-width: 63.75rem;
-    border-radius: 0.1875rem;
-    margin: auto;
 
     @include tablet {
       display: flex;
@@ -33,8 +35,10 @@
     padding: 1rem;
     margin-right: 1rem;
 
-    &:focus {
+    &:focus,
+    &:focus-visible {
       border: 1px solid $instock-indigo;
+      outline: none;
     }
 
     @include tablet {
@@ -79,8 +83,10 @@
     display: flex;
     padding: 1rem;
     justify-content: space-evenly;
+
     &--subheader {
       display: none;
+
       @include tablet {
         display: flex;
       }
@@ -90,6 +96,7 @@
   &__details {
     flex-grow: 1;
     flex-basis: 50%;
+    align-items: center;
     /* border: 2px solid red; */
 
     @include tablet {

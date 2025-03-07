@@ -1,40 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./WarehouseListComponent.scss";
 
 function WarehouseListComponent() {
   const [WarehouseList, setWarehouseList] = useState([]);
-  const { warehouseData } = useParams();
-
   const URL = import.meta.env.VITE_SERVER_BASE_URL;
   const PORT = import.meta.env.VITE_SERVER_PORT;
-
-  /*   function fetchWarehouse() {
-    fetch("/warehouse.json")
-      .then((response) => response.json())
-      .then((data) => setWarehouseList(data))
-      .catch((error) => console.log(error));
-  }
-
-  useEffect(() => {
-    fetchWarehouse();
-  }, []); */
-
-  /*   useEffect(() => {
-    const loadWarehouses = async () => {
-      try {
-        const response = await axios.get(`${URL}`);
-        setWarehouseList(response.data);
-      } catch (error) {
-        console.log("error fetching warehouses");
-      }
-      if (warehouseData) {
-        loadWarehouses();
-      }
-    };
-  }, [warehouseData]); */
 
   async function loadWarehouses() {
     try {
@@ -62,7 +34,6 @@ function WarehouseListComponent() {
           </button>
         </div>
       </div>
-      {/*    warehouse information*/}
       <div className="warehouse-list__item-wrapper">
         <div className="warehouse-list__item warehouse-list__item--subheader">
           <div className="warehouse-list__details">
@@ -99,9 +70,7 @@ function WarehouseListComponent() {
                 <h3 className="warehouse-list__label">Warehouse</h3>
                 <ul>
                   <li className="warehouse-list__item-name">
-                    <Link to={`warehouse/${item.id}`}>
-                      {item.warehouse_name}
-                    </Link>{" "}
+                    <Link to={`/${item.id}`}>{item.warehouse_name}</Link>{" "}
                   </li>
                 </ul>
               </div>
@@ -134,7 +103,7 @@ function WarehouseListComponent() {
             <div className="warehouse-list__actions">
               <h3 className="warehouse-list__label">Actions</h3>
               <div className="warehouse-list__action-icons">
-                <Link to={`/deletewarehouse/${item.id}`}>
+                <Link to={`/${item.id}`}>
                   <svg
                     className="warehouse-list__icon"
                     width="24"
@@ -149,7 +118,7 @@ function WarehouseListComponent() {
                     />
                   </svg>
                 </Link>
-                <Link to={`/editwarehouse/${item.id}`}>
+                <Link to={`/${item.id}/warehouse`}>
                   <svg
                     className="warehouse-list__icon"
                     width="24"
