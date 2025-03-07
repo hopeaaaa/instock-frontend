@@ -25,7 +25,10 @@ function App() {
           path="/warehouse/:id"
           element={<WarehouseDetails baseUrl={baseUrl} PORT={PORT} />}
         />
-        <Route path="/warehouse/add" element={<WarehouseAdd />} />
+        <Route
+          path="/warehouse/add"
+          element={<WarehouseAdd baseUrl={baseUrl} PORT={PORT} />}
+        />
         <Route path="/warehouse/:id/edit" element={<WarehouseEdit />} />
         <Route path="/inventory" element={<InventoryList />} />
         <Route path="/inventory/:id" element={<InventoryDetails />} />

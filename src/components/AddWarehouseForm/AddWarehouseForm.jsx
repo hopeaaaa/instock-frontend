@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import "./AddWarehouseForm.scss";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
-function AddWarehouseForm() {
+function AddWarehouseForm({ baseUrl, PORT }) {
   const [warehouseName, setWarehouseName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -11,6 +12,47 @@ function AddWarehouseForm() {
   const [contactPostion, SetContactPosition] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
+
+  console.log(`${baseUrl + PORT}/warehouse/createwarehouse`);
+  const handleWarehouseNameChange = (event) => {
+    setWarehouseName(event.target.value);
+  };
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value);
+  };
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
+  };
+  const handleCountryChange = (event) => {
+    setCountry(event.target.value);
+  };
+  function handleContactNameChange(event) {
+    setContactName(event.target.value);
+  }
+  const handleContactPositionChange = (event) => {
+    SetContactPosition(event.target.value);
+  };
+  const handlePhoneNumberChange = (event) => {
+    setPhoneNumber(event.target.value);
+  };
+  function handleEmailChange(event) {
+    setEmail(event.target.value);
+  }
+
+  const addWarehouse = async () => {
+    try {
+      const response = await axios.post(
+        `${baseUrl + PORT}/warehouse/createwarehouse`
+      );
+      console.log(response);
+    } catch (error) {
+      console.error("Unable to add warehouse", error);
+    }
+  };
+
+  // const submitForm = (event) => {
+  //   const
+  // }
 
   return (
     <form className="add-form">
@@ -24,6 +66,8 @@ function AddWarehouseForm() {
           name="warehouse-name"
           placeholder="Warehouse Name"
           className="add-form__input"
+          value={warehouseName}
+          onChange={handleWarehouseNameChange}
           id="add-form__warehouse-name"
         />
         <label htmlFor="add-form__address" className="add-form__label">
@@ -34,6 +78,8 @@ function AddWarehouseForm() {
           name="address"
           placeholder="Street Address"
           className="add-form__input"
+          value={address}
+          onChange={handleAddressChange}
           id="add-form__address"
         />
         <label htmlFor="add-form__city" className="add-form__label">
@@ -44,6 +90,8 @@ function AddWarehouseForm() {
           name="city"
           placeholder="City"
           className="add-form__input"
+          value={city}
+          onChange={handleCityChange}
           id="add-form__city"
         />
         <label htmlFor="add-form__country" className="add-form__label">
@@ -54,6 +102,8 @@ function AddWarehouseForm() {
           name="country"
           placeholder="Country"
           className="add-form__input"
+          value={country}
+          onChange={handleCountryChange}
           id="add-form__country"
         />
       </div>
@@ -67,6 +117,8 @@ function AddWarehouseForm() {
           name="contact-name"
           placeholder="Contact Name"
           className="add-form__input"
+          value={contactName}
+          onChange={handleContactNameChange}
           id="add-form__contact-name"
         />
         <label htmlFor="add-form__position" className="add-form__label">
@@ -77,16 +129,20 @@ function AddWarehouseForm() {
           name="position"
           placeholder="Position"
           className="add-form__input"
+          value={contactPostion}
+          onChange={handleContactPositionChange}
           id="add-form__position"
         />
         <label htmlFor="add-form__phone" className="add-form__label">
           Phone Number
         </label>
         <input
-          type="number"
+          type="text"
           name="phone-number"
           placeholder="Phone Number"
           className="add-form__input"
+          value={phoneNumber}
+          onChange={handlePhoneNumberChange}
           id="add-form__phone"
         />
         <label htmlFor="add-form__email" className="add-form__label">
@@ -97,6 +153,8 @@ function AddWarehouseForm() {
           name="email"
           placeholder="Email"
           className="add-form__input"
+          value={email}
+          onChange={handleEmailChange}
           id="add-form__email"
         />
       </div>
@@ -106,7 +164,11 @@ function AddWarehouseForm() {
             Cancel
           </button>
         </Link>
-        <button type="submit" className="add-form__submit">
+        <button
+          type="submit"
+          className="add-form__submit"
+          onClick={addWarehouse}
+        >
           + Add Warehouse
         </button>
       </div>
