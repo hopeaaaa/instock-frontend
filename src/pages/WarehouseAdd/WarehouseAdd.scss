@@ -1,0 +1,17 @@
+@use "../../styles/partials/variables" as *;
+
+.warehouse-add {
+  color: $instock-black;
+  display: flex;
+  flex-direction: column;
+  &__header {
+    display: flex;
+    flex-direction: row;
+    background-color: $white;
+    margin: 0rem 1rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+}

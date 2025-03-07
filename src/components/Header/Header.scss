@@ -2,10 +2,9 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
-
   display: flex;
   flex-direction: column;
-  padding: 1rem 0rem 1rem;
+  padding: 1rem 0rem;
   @include tablet {
     padding: 2rem 1rem 2rem;
     flex-direction: row;
@@ -24,7 +23,6 @@
     }
   }
   &__nav {
-  
     &-bar {
       color: $white;
       @include space-around;
@@ -55,7 +53,7 @@ a {
   text-decoration: none;
 }
 
-.header-overlay{
+.header-overlay {
   width: 100%;
   position: absolute;
   z-index: -1;
