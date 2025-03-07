@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import './InventoryDeleteModal.scss';
 
-const InventoryDeleteModal = ({item, setShowDelete}) => {
+const InventoryDeleteModal = ({item, setShowDelete,  inventoryList, setInventoryList}) => {
 
     const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
     const PORT = import.meta.env.VITE_SERVER_PORT;
@@ -12,8 +12,9 @@ const InventoryDeleteModal = ({item, setShowDelete}) => {
     try{
         const path = `${BASE_URL}:${PORT}/inventory/${item.id}`
         const response = await axios.delete(path);
-        console.log(response)
+   
         if(response.status == 204){
+            setInventoryList(inventoryList.filter(i=>i.id!=item.id))
             setShowDelete(false)
         }
     }catch(error){

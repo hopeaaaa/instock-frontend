@@ -1,7 +1,7 @@
 import axios from "axios";
 import './WarehouseDeleteModal.scss';
 
-const WarehouseDeleteModal = ({item, setShowDelete}) => {
+const WarehouseDeleteModal = ({item, setShowDelete, inventories, setInventories}) => {
 
     const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
     const PORT = import.meta.env.VITE_SERVER_PORT;
@@ -10,8 +10,9 @@ const WarehouseDeleteModal = ({item, setShowDelete}) => {
     try{
         const path = `${BASE_URL}:${PORT}/warehouse/${item.id}`
         const response = await axios.delete(path);
-        console.log(response)
+        
         if(response.status == 204){
+            
             setShowDelete(false)
         }
     }catch(error){

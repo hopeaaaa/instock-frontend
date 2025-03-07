@@ -7,22 +7,8 @@ import axios from "axios";
 import InventoryDeleteModal from "../InventoryDeleteModal/InventoryDeleteModal";
 import { useEffect, useState } from "react";
 
-function WarehouseInventory({ baseUrl, PORT, id, handleDeleteClick }) {
-  const [inventories, setInventories] = useState([]);
-  const getWarehouseInventory = async () => {
-    try {
-      const response = await axios.get(
-        `${baseUrl + PORT}/warehouse/${id}/inventories`
-      );
-      setInventories(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.error(`Unable to retrieve inventories for warehouse ${id}`);
-    }
-  };
-  useEffect(() => {
-    getWarehouseInventory();
-  }, [inventories]);
+function WarehouseInventory({ baseUrl, PORT, id, handleDeleteClick, inventories }) {
+  
   return (
     <>
       <ul className="warehouse-details__tablet-filter">
