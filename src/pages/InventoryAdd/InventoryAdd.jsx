@@ -1,6 +1,7 @@
 import "./InventoryAdd.scss";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import axios from "axios";
 
 const VITE_SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
 const VITE_SERVER_PORT = import.meta.env.VITE_SERVER_PORT;
@@ -12,17 +13,19 @@ function InventoryAdd() {
     e.preventDefault();
     const { item_name, description, category, status, quantity } =
       formRef.current;
-
-    const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory`;
-    const response = await axios.post(path, {
-      item_name: item_name.value,
-      description: description.value,
-      category: category.value,
-      status: status.value,
-      quantity: quantity.value,
-    });
-    setInventoryList([...inventoryList, response.data]);
+    console.log(item_name);
+    // const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory`;
+    // const response = await axios.post(path, {
+    //   item_name: item_name.value,
+    //   description: description.value,
+    //   category: category.value,
+    //   status: status.value,
+    //   quantity: quantity.value,
+    // });
+    // setInventoryList([...inventoryList, response.data]);
   };
+
+  //  const getAllWarehouses
 
   return (
     <>
@@ -151,8 +154,17 @@ function InventoryAdd() {
               >
                 Warehouse
               </label>
+              {/* <select name="pets" id="pet-select">
+  <option value="">--Please choose an option--</option>
+  <option value="dog">Dog</option>
+  <option value="cat">Cat</option>
+  <option value="hamster">Hamster</option>
+  <option value="parrot">Parrot</option>
+  <option value="spider">Spider</option>
+  <option value="goldfish">Goldfish</option>
+</select> */}
               <input
-                type="text"
+                type="select"
                 name="warehouse"
                 placeholder="Please select"
                 className="add-inventory-form__input"
@@ -161,15 +173,15 @@ function InventoryAdd() {
             </div>
           </div>
         </div>
+        <div className="add-inventory-form__CTA">
+          <Link to="/">
+            <button className="add-inventory-form__cancel">Cancel</button>
+          </Link>
+          <button type="submit" className="add-inventory-form__submit">
+            + Add Inventory
+          </button>
+        </div>
       </form>
-      <div className="add-inventory-form__CTA">
-        <Link to="/">
-          <button className="add-inventory-form__cancel">Cancel</button>
-        </Link>
-        <button type="submit" className="add-inventory-form__submit">
-          + Add Inventory
-        </button>
-      </div>
     </>
   );
 }

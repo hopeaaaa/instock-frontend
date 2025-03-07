@@ -12,6 +12,10 @@
     display: flex;
   }
 
+  &__wrapper {
+    flex-grow: 1;
+  }
+
   &__header {
     padding: 1rem;
   }
