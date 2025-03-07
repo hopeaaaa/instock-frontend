@@ -7,7 +7,7 @@ import axios from "axios";
 import InventoryDeleteModal from "../InventoryDeleteModal/InventoryDeleteModal";
 import { useEffect, useState } from "react";
 
-function WarehouseInventory({ baseUrl, PORT, id }) {
+function WarehouseInventory({ baseUrl, PORT, id, handleDeleteClick }) {
   const [inventories, setInventories] = useState([]);
   const getWarehouseInventory = async () => {
     try {
@@ -22,7 +22,7 @@ function WarehouseInventory({ baseUrl, PORT, id }) {
   };
   useEffect(() => {
     getWarehouseInventory();
-  }, []);
+  }, [inventories]);
   return (
     <>
       <ul className="warehouse-details__tablet-filter">
@@ -98,12 +98,13 @@ function WarehouseInventory({ baseUrl, PORT, id }) {
 
             <div className="warehouse-details__actions">
               {/* <Link to={InventoryDeleteModal}> */}
+              <button onClick={()=>handleDeleteClick(item)}>
               <img
-                onClick={InventoryDeleteModal}
                 src={DeleteItem}
                 alt="Delete this Item Image"
                 className="warehouse-details__item-delete"
               />
+              </button>
               {/* </Link> */}
               <Link to={`/inventory/${id}/edit`}>
                 <img
