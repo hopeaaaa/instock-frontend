@@ -1,8 +1,10 @@
-import InventoryDeleteModal from "../../components/InventoryDeleteModal/InventoryDeleteModal";
-
+import WarehouseListComponent from "../../components/WarehouseListComponent/WarehouseListComponent";
+import { useParams } from "react-router-dom";
 
 function WarehouseList() {
-  return <div></div>
+  const { warehouseData } = useParams();
+
+  return <WarehouseListComponent warehouseData={warehouseData} />;
 }
 
 export default WarehouseList;
