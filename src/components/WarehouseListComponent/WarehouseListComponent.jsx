@@ -18,7 +18,7 @@ function WarehouseListComponent({handleDeleteClick}) {
 
   useEffect(() => {
     loadWarehouses();
-  }, []);
+  }, [WarehouseList]);
 
   return (
     <div className="warehouse-list">
