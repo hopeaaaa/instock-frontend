@@ -20,18 +20,18 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<WarehouseList />} />
+        <Route path="/warehouse" element={<WarehouseList />} />
         <Route
-          path="/:id"
+          path="/warehouse/:id"
           element={<WarehouseDetails baseUrl={baseUrl} PORT={PORT} />}
         />
-        <Route path="/add" element={<WarehouseAdd />} />
-        <Route path="/:id/edit" element={<WarehouseEdit />} />
+        <Route path="/warehouse/add" element={<WarehouseAdd />} />
+        <Route path="/warehouse/:id/edit" element={<WarehouseEdit />} />
         <Route path="/inventory" element={<InventoryList />} />
         <Route path="/inventory/:id" element={<InventoryDetails />} />
         <Route path="/inventory/add" element={<InventoryAdd />} />
         <Route path="/inventory/:id/edit" element={<InventoryEdit />} />
-        <Route path="/" element={<InventoryList />} />
+        <Route path="/" element={<WarehouseList />} />
       </Routes>
 
       <Footer />

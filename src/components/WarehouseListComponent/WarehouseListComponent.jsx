@@ -28,7 +28,7 @@ function WarehouseListComponent({ handleDeleteClick }) {
             className="warehouse-list__search-input"
             placeholder="Search..."
           />
-          <Link to="/add">
+          <Link to="/warehouse/add">
             <button className="warehouse-list__add-button">
               + Add New Warehouse
             </button>

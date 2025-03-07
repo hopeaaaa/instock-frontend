@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import "./AddWarehouseForm.scss";
+import { useState, useEffect } from "react";
 
 function AddWarehouseForm() {
+  const [warehouseName, setWarehouseName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [contactName, setContactName] = useState("");
+  const [contactPostion, SetContactPosition] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+
   return (
     <form className="add-form">
       <div className="add-form__warehouse-info">
