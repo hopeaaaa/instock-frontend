@@ -13,19 +13,19 @@ function InventoryAdd() {
     e.preventDefault();
     const { item_name, description, category, status, quantity } =
       formRef.current;
-    console.log(item_name);
-    // const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory`;
-    // const response = await axios.post(path, {
-    //   item_name: item_name.value,
-    //   description: description.value,
-    //   category: category.value,
-    //   status: status.value,
-    //   quantity: quantity.value,
-    // });
+
+    //  const getAllWarehouses
+
+    const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory/api/inventories`;
+    const response = await axios.post(path, {
+      item_name: item_name.value,
+      description: description.value,
+      category: category.value,
+      status: status.value,
+      quantity: quantity.value,
+    });
     // setInventoryList([...inventoryList, response.data]);
   };
-
-  //  const getAllWarehouses
 
   return (
     <>
@@ -66,7 +66,7 @@ function InventoryAdd() {
               </label>
               <input
                 type="text"
-                name="item-name"
+                name="item_name"
                 placeholder="Item Name"
                 className="add-inventory-form__input"
                 id="add-inventory-form__item-name"
@@ -116,20 +116,24 @@ function InventoryAdd() {
                 Status
               </label>
               <div className="add-inventory-form__checkbox-options">
-                <input
-                  type="checkbox"
-                  name="status"
-                  placeholder="Status"
-                  className="add-inventory-form__checkbox"
-                  id="add-inventory-form__status"
-                />
-                <input
-                  type="checkbox"
-                  name="status"
-                  placeholder="Status"
-                  className="add-inventory-form__checkbox"
-                  id="add-inventory-form__status"
-                />
+                <fieldset>
+                  <input
+                    type="checkbox"
+                    name="status1"
+                    placeholder="Status"
+                    className="add-inventory-form__checkbox"
+                    id="add-inventory-form__status"
+                    value="In Stock"
+                  />
+                  <input
+                    type="checkbox"
+                    name="status"
+                    placeholder="Status"
+                    className="add-inventory-form__checkbox"
+                    id="add-inventory-form__status"
+                    value="Out of Stock"
+                  />
+                </fieldset>
               </div>
             </div>
             <div className="add-inventory-form__input-wrapper">
