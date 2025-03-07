@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./WarehouseListComponent.scss";
 
-function WarehouseListComponent() {
+function WarehouseListComponent({handleDeleteClick}) {
   const [WarehouseList, setWarehouseList] = useState([]);
   const URL = import.meta.env.VITE_SERVER_BASE_URL;
   const PORT = import.meta.env.VITE_SERVER_PORT;
@@ -103,7 +103,8 @@ function WarehouseListComponent() {
             <div className="warehouse-list__actions">
               <h3 className="warehouse-list__label">Actions</h3>
               <div className="warehouse-list__action-icons">
-                <Link to={`/${item.id}`}>
+                {/* <Link to={`/${item.id}`}> */}
+                <button onClick={()=>handleDeleteClick(item)}>
                   <svg
                     className="warehouse-list__icon"
                     width="24"
@@ -117,7 +118,8 @@ function WarehouseListComponent() {
                       fill="#C94515"
                     />
                   </svg>
-                </Link>
+                  </button>
+                {/* </Link> */}
                 <Link to={`/${item.id}/warehouse`}>
                   <svg
                     className="warehouse-list__icon"
