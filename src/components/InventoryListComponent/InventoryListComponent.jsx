@@ -16,11 +16,8 @@ function InventoryListComponent({ handleDeleteClick , inventoryList}) {
             className="inventory-list__search-input"
             placeholder="Search"
           />
-          <button
-            onClick={() => console.log("clicked")}
-            className="inventory-list__add-button"
-          >
-            + Add New Item
+          <button className="inventory-list__add-button">
+            <Link to={"/inventory/add"}>+ Add New Item</Link>
           </button>
         </div>
       </div>
