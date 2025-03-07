@@ -3,10 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-
-
-function InventoryListComponent({ handleDeleteClick , inventoryList}) {
-
+function InventoryListComponent({ handleDeleteClick, inventoryList }) {
   return (
     <div className="inventory-list">
       <div className="inventory-list__header">
@@ -195,7 +192,7 @@ function InventoryListComponent({ handleDeleteClick , inventoryList}) {
                     //   key={`item-city`}
                     className="inventory-list__text"
                   >
-                    Manhattan
+                    {item.warehouse_id}
                   </li>
                 </ul>
               </div>
