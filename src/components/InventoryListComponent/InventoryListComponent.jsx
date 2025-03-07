@@ -3,26 +3,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const VITE_SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
-const VITE_SERVER_PORT = import.meta.env.VITE_SERVER_PORT;
 
-function InventoryListComponent({ handleDeleteClick }) {
-  const [inventoryList, setInventoryList] = useState([]);
 
-  const fetchInventory = async () => {
-    try {
-      const response = await axios.get(
-        `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory`
-      );
-      setInventoryList(response.data);
-    } catch (error) {
-      console.log("Error fetching inventory:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchInventory();
-  }, []);
+function InventoryListComponent({ handleDeleteClick , inventoryList}) {
 
   return (
     <div className="inventory-list">

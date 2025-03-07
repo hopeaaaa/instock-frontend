@@ -1,0 +1,52 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.add-form {
+  background-color: $white;
+  color: $instock-black;
+  margin: 0rem 1rem;
+  padding: 1rem 0rem;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px $cloud solid;
+  &__header {
+    padding: 0rem 0rem 1rem;
+    margin: 0rem;
+  }
+  &__warehouse-info {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  &__label {
+    font-weight: 600;
+    padding-bottom: 0.125rem;
+  }
+  &__input {
+    padding: 0.5rem;
+    border: 1px $instock-black solid;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+  }
+  &__personnel-info {
+    @extend .add-form__warehouse-info;
+    border-top: 2px $cloud solid;
+  }
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+    background-color: $light-grey;
+    padding: 1rem;
+  }
+  &__cancel {
+    padding: 0rem 1rem;
+    border: 1px $cloud solid;
+    border-radius: 1rem;
+  }
+  &__submit {
+    padding: 0rem 1rem;
+    background-color: $instock-indigo;
+    border-radius: 1rem;
+    color: $white;
+  }
+}
