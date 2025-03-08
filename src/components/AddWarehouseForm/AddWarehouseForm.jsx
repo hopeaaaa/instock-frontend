@@ -37,7 +37,6 @@ function AddWarehouseForm({ baseUrl, PORT }) {
   function handleEmailChange(event) {
     setEmail(event.target.value);
   }
-  console.log(`${baseUrl + PORT}/api/warehouses`);
   const addWarehouse = async () => {
     try {
       const response = await axios.post(`${baseUrl + PORT}/api/warehouses`, {
@@ -50,7 +49,6 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         contact_phone: phoneNumber,
         contact_email: email,
       });
-      console.log(response.data);
     } catch (error) {
       console.error("Unable to add warehouse", error);
     }
@@ -59,6 +57,14 @@ function AddWarehouseForm({ baseUrl, PORT }) {
   async function submitForm(event) {
     event.preventDefault();
     try {
+      const phoneNumberFormat = /^[0-9]{11}$/;
+      const emailFormat =
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      if (!emailFormat.test(email) || !phoneNumberFormat.test(phoneNumber)) {
+        return alert("Invalid phone/email. Phone number should be 11 digits");
+      }
+
       if (
         !warehouseName ||
         !address ||
