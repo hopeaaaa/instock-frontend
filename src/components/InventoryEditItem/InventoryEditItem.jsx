@@ -123,12 +123,13 @@ console.log(data);
                         </svg>
                         </Link>
                     </button>
-                    <h1 className="inventory-edit__item-name">Edit Inventory Item</h1>
+                    <h1 className="inventory-edit__item-header">Edit Inventory Item</h1>
                 </div>
             </header>
         <article className='inventory-edit__body'>
             <form className="edit-form" onSubmit={onSubmitForm}>
-                <section className="section">
+                <div className='edit-form__main'>
+                <section className="edit-form__main--container edit-form__main--container1">
                     <h2 className='edit-form__headers'>Item Details</h2>
                     <label htmlFor="item-name" className='edit-form__title'>Item Name</label>
                     <input type="text" id="item-name" name='item_name'  className='edit-form__input edit-form__input--text' defaultValue={name}
@@ -148,7 +149,7 @@ console.log(data);
                         })}
                     </select>
                 </section>
-                <section >
+                <section  className='edit-form__main--container edit-form__main--container2'>
                 <h2 className='edit-form__headers'>Item Availability</h2>
                 <label className='edit-form__title'>Status</label>
                 <div className='edit-form__radio-group'> 
@@ -187,6 +188,7 @@ console.log(data);
                         
                 </select>
                 </section>
+                </div>
 
 
                 <div className="edit-form__button-group">
