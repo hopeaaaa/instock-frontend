@@ -4,8 +4,7 @@ import "./WarehouseDeleteModal.scss";
 const WarehouseDeleteModal = ({
   item,
   setShowDelete,
-  inventories,
-  setInventories,
+  warehouseList, setWarehouseList
 }) => {
   const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
   const PORT = import.meta.env.VITE_SERVER_PORT;
@@ -16,6 +15,10 @@ const WarehouseDeleteModal = ({
       const response = await axios.delete(path);
 
       if (response.status == 204) {
+        if (response.status == 204) {
+          setWarehouseList(warehouseList.filter((i) => i.id != item.id));
+          setShowDelete(false);
+        }
         setShowDelete(false);
       }
     } catch (error) {

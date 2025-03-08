@@ -1,5 +1,7 @@
+import EditWarehouseForm from "../../components/EditWarehouseForm/EditWarehouseForm";
+
 function WarehouseEdit() {
-  return <div></div>;
+  return <EditWarehouseForm/>;
 }
 
 export default WarehouseEdit;
