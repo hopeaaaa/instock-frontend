@@ -2,10 +2,11 @@ import './InventoryEditItem.scss';
 import {Link, useParams} from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import axios from 'axios';
-const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
-const PORT = import.meta.env.VITE_SERVER_PORT
+
 
 function InventoryEditItem() {
+    const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
+    const PORT = import.meta.env.VITE_SERVER_PORT
 
     const param = useParams();
     const [data, setData] = useState({});
