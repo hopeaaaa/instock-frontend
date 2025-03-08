@@ -1,0 +1,65 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font" as *;
+@use "../../styles/partials/resets" as *;
+
+.warehouse-details {
+  background-color: $white;
+  width: calc(100% - 1rem);
+  max-width: 63.75rem;
+  border-radius: 0.1875rem;
+  box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1019607843);
+  margin: auto;
+
+  @include tablet {
+    width: calc(100% - 2rem);
+    max-width: 1020px;
+  }
+
+  &__tablet-name {
+    text-transform: uppercase;
+    color: $slate;
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    display: none;
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+      gap: 0.125rem;
+      flex-grow: 1;
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+      flex-basis: 16.7%;
+      max-width: max-content;
+    }
+  }
+
+  &__tablet-filter {
+    display: none;
+    /*  border: 2px solid red; */
+    background-color: $light-grey;
+    @include tablet {
+      display: flex;
+    }
+  }
+
+  &__item-redirect {
+    color: $instock-indigo;
+  }
+
+  &__label--mobile {
+    color: $slate;
+  }
+
+  &__item-input-instock {
+    color: green;
+    background-color: lightgreen;
+    border-radius: 1rem;
+  }
+  &__item-input-outofstock {
+    color: red;
+    background-color: lightcoral;
+    border-radius: 1rem;
+  }
+}
