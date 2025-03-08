@@ -13,7 +13,7 @@ import InventoryEdit from "./pages/InventoryEdit/InventoryEdit.jsx";
 
 function App() {
   const baseUrl = `${import.meta.env.VITE_SERVER_BASE_URL}:`;
-  const PORT = import.meta.env.VITE_SERVER_PORT;
+  const PORT = import.meta.env.VITE_SERVER_PORT || 8000;
 
   return (
     <BrowserRouter>

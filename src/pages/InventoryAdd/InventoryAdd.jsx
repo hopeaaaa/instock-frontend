@@ -1,30 +1,67 @@
 import "./InventoryAdd.scss";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import loadWarehouses from "../../utils/FetchWarehousesList/FetchWarehousesList";
 
 const VITE_SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
 const VITE_SERVER_PORT = import.meta.env.VITE_SERVER_PORT;
 
 function InventoryAdd() {
+  const [warehouseList, setWarehouseList] = useState([]);
+  const [selectedWarehouse, setSelectedWarehouse] = useState("");
+  const [categoryList, setCategoryList] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
   const formRef = useRef();
+
+  useEffect(() => {
+    const getWarehouses = async () => {
+      const response = await loadWarehouses(`/api/warehouses`);
+      setWarehouseList(response);
+    };
+    getWarehouses();
+  }, []);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/api/inventories/category`;
+      try {
+        const response = await axios.get(path);
+        if (JSON.stringify(response.data) !== JSON.stringify(categoryList)) {
+          setCategoryList(response.data); // Update only if data is different
+        }
+      } catch (error) {
+        console.error("Unable get all categories:", error);
+        throw error;
+      }
+    };
+    getCategories();
+  }, [categoryList]);
 
   const addInventory = async (e) => {
     e.preventDefault();
+
+    // try {
     const { item_name, description, category, status, quantity } =
       formRef.current;
+    console.log(quantity.defaultValue);
 
-    //  const getAllWarehouses
-
-    const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory/api/inventories`;
+    const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/api/inventories`;
     const response = await axios.post(path, {
       item_name: item_name.value,
       description: description.value,
       category: category.value,
       status: status.value,
       quantity: quantity.value,
+      warehouse_id: selectedWarehouse,
     });
-    // setInventoryList([...inventoryList, response.data]);
+    // if (response.status === 201) {
+    //   window.location.href = "/inventory";
+    // }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    console.log(quantity.value);
   };
 
   return (
@@ -94,13 +131,17 @@ function InventoryAdd() {
               >
                 Category
               </label>
-              <input
-                type="text"
+              <select
                 name="category"
-                placeholder="Please select"
-                className="add-inventory-form__input"
-                id="add-inventory-form__category"
-              />
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                {categoryList.map((item, index) => (
+                  <option key={index} value={item.category}>
+                    {item.category}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         </div>
@@ -116,24 +157,22 @@ function InventoryAdd() {
                 Status
               </label>
               <div className="add-inventory-form__checkbox-options">
-                <fieldset>
-                  <input
-                    type="checkbox"
-                    name="status1"
-                    placeholder="Status"
-                    className="add-inventory-form__checkbox"
-                    id="add-inventory-form__status"
-                    value="In Stock"
-                  />
-                  <input
-                    type="checkbox"
-                    name="status"
-                    placeholder="Status"
-                    className="add-inventory-form__checkbox"
-                    id="add-inventory-form__status"
-                    value="Out of Stock"
-                  />
-                </fieldset>
+                <input
+                  type="radio"
+                  name="status"
+                  placeholder="Status"
+                  className="add-inventory-form__checkbox"
+                  id="add-inventory-form__status"
+                  value="In Stock"
+                />
+                <input
+                  type="radio"
+                  name="status"
+                  placeholder="Status"
+                  className="add-inventory-form__checkbox"
+                  id="add-inventory-form__status"
+                  value="Out of Stock"
+                />
               </div>
             </div>
             <div className="add-inventory-form__input-wrapper">
@@ -147,6 +186,7 @@ function InventoryAdd() {
                 type="number"
                 name="quantity"
                 placeholder="0"
+                // defaultValue="0"
                 className="add-inventory-form__input"
                 id="add-inventory-form__quantity"
               />
@@ -158,22 +198,18 @@ function InventoryAdd() {
               >
                 Warehouse
               </label>
-              {/* <select name="pets" id="pet-select">
-  <option value="">--Please choose an option--</option>
-  <option value="dog">Dog</option>
-  <option value="cat">Cat</option>
-  <option value="hamster">Hamster</option>
-  <option value="parrot">Parrot</option>
-  <option value="spider">Spider</option>
-  <option value="goldfish">Goldfish</option>
-</select> */}
-              <input
-                type="select"
+              <select
                 name="warehouse"
-                placeholder="Please select"
-                className="add-inventory-form__input"
-                id="add-inventory-form__warehouse"
-              />
+                value={selectedWarehouse}
+                onChange={(e) => setSelectedWarehouse(e.target.value)}
+              >
+                <option value=""></option>
+                {warehouseList.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.warehouse_name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         </div>

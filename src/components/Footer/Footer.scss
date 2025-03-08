@@ -6,8 +6,8 @@
   @include flex-center;
   background-color: $light-grey;
   bottom: 0;
-  position: fixed;
   width: 100vw;
+  margin-top: auto;
 
   &__text {
     color: $slate;
