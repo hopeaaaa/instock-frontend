@@ -8,11 +8,11 @@ const VITE_SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
 const VITE_SERVER_PORT = import.meta.env.VITE_SERVER_PORT;
 
 function InventoryAdd() {
-  const [WarehouseList, setWarehouseList] = useState([]);
-  const [selectedWarehouse, setSelectedWarehouse] = useState("Manhattan");
+  const [warehouseList, setWarehouseList] = useState([]);
+  const [selectedWarehouse, setSelectedWarehouse] = useState("");
+  const [categoryList, setCategoryList] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
   const formRef = useRef();
-
-  // const handleWarehouseSelection
 
   useEffect(() => {
     const getWarehouses = async () => {
@@ -21,6 +21,22 @@ function InventoryAdd() {
     };
     getWarehouses();
   }, []);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory/api/inventories/category`;
+      try {
+        const response = await axios.get(path);
+        if (JSON.stringify(response.data) !== JSON.stringify(categoryList)) {
+          setCategoryList(response.data); // Update only if data is different
+        }
+      } catch (error) {
+        console.error("Unable get all categories:", error);
+        throw error;
+      }
+    };
+    getCategories();
+  }, [categoryList]);
 
   const addInventory = async (e) => {
     e.preventDefault();
@@ -105,13 +121,24 @@ function InventoryAdd() {
               >
                 Category
               </label>
-              <input
+              <select
+                name="category"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                {categoryList.map((item, index) => {
+                  <option key={index} value={index}>
+                    {item.category}
+                  </option>;
+                })}
+              </select>
+              {/* <input
                 type="text"
                 name="category"
                 placeholder="Please select"
                 className="add-inventory-form__input"
                 id="add-inventory-form__category"
-              />
+              /> */}
             </div>
           </div>
         </div>
@@ -175,7 +202,7 @@ function InventoryAdd() {
                 onChange={(e) => setSelectedWarehouse(e.target.value)}
               >
                 <option value=""></option>
-                {WarehouseList.map((item) => (
+                {warehouseList.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.warehouse_name}
                   </option>
