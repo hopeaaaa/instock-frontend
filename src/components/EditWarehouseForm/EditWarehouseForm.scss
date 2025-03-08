@@ -1,15 +1,19 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.add-form {
+.edit-form {
+    width: calc(100% - 1rem);
   background-color: $white;
   color: $instock-black;
-  margin: 0rem 1rem;
+  padding: 1rem 0rem;
   display: flex;
   flex-direction: column;
   border-top: 2px $cloud solid;
+  &__separation{
+    flex-direction: row;
+}
   &__header {
-    padding: 0rem;
+    padding: 0rem 0rem 1rem;
     margin: 0rem;
   }
   &__warehouse-info {
@@ -28,7 +32,7 @@
     margin-bottom: 1rem;
   }
   &__personnel-info {
-    @extend .add-form__warehouse-info;
+    @extend .edit-form__warehouse-info;
     border-top: 2px $cloud solid;
   }
   &__buttons {
@@ -48,4 +52,11 @@
     border-radius: 1rem;
     color: $white;
   }
+}
+.form-container{
+    padding: 0 1rem;
+
+    @include tablet{
+        padding: 0 2rem;
+    }
 }

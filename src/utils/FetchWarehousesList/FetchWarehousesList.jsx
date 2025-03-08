@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const URL = import.meta.env.VITE_SERVER_BASE_URL;
-const PORT = import.meta.env.VITE_SERVER_PORT || 8080;
+const PORT = import.meta.env.VITE_SERVER_PORT;
 
 async function loadWarehouses(path) {
   try {

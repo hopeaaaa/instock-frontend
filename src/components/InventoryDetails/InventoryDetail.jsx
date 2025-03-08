@@ -10,7 +10,7 @@ const InventoryDetail = () => {
   const PORT = import.meta.env.VITE_SERVER_PORT;
   useEffect(() => {
     const getInventoryDetails = async () => {
-      const path = `${BASE_URL}:${PORT}/inventory/${param.id}`;
+      const path = `${BASE_URL}:${PORT}/api/inventories/${param.id}`;
       try {
         const response = await axios.get(path);
         console.log(response.data);
@@ -50,7 +50,8 @@ const InventoryDetail = () => {
             </Link>
             <h1 className="inventory-details__item-name">{data.item_name}</h1>
           </div>
-          <button className="inventory-details__edit-button">
+      
+          <Link to={`/inventory/${data.id}/edit`} className="inventory-details__edit-button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -65,7 +66,8 @@ const InventoryDetail = () => {
               />
             </svg>
             <p className="inventory-details__edit-button--text">Edit</p>
-          </button>
+          </Link>
+        
         </header>
       </div>
       <article className="inventory-details__body">

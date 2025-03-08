@@ -27,7 +27,7 @@ function WarehouseDetails({ baseUrl, PORT }) {
     const getWarehouseInventory = async () => {
       try {
         const response = await axios.get(
-          `${baseUrl + PORT}/warehouse/${id}/inventories`
+          `${baseUrl + PORT}/api/warehouses/${id}/inventories`
         );
         setInventories(response.data);
         console.log(response.data);

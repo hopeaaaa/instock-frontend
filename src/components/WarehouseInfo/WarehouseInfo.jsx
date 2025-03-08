@@ -10,7 +10,9 @@ function WarehouseInfo({ baseUrl, PORT, id }) {
 
   const getWarehouseInfo = async () => {
     try {
-      const response = await axios.get(`${baseUrl}${PORT}/warehouse/${id}`);
+      const response = await axios.get(
+        `${baseUrl}${PORT}/api/warehouses/${id}`
+      );
       setWarehouseInfo(response.data);
     } catch (error) {
       console.error(

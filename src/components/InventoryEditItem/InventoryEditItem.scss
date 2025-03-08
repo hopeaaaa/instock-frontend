@@ -8,6 +8,13 @@
     margin: auto;
     color: $instock-black;
     background-color: $white;
+
+    @include tablet{
+        width: calc(100% - 3rem);
+    }
+    @include desktop{
+        max-width: 64rem;
+    }
     &__header-container{
         border-bottom: 1px solid $cloud;
     }
@@ -15,14 +22,9 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: 1rem;
         padding: 2rem 1rem;
-        font-size: .75rem;
-        font-weight: 600;
-        &--divider{
-            display: flex;
-            gap: .5rem;
-        }
         @include tablet{
             padding: 2rem 2rem;
         }
@@ -30,37 +32,127 @@
             padding: 2rem 2.5rem;
         }
     }
+    &__item-header{
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+    
     &__body{
-        padding: 1rem 1.5rem;
+        padding: 0 1.5rem;
         color: $instock-black;
         @include tablet{
-            width: 70%;
+            width: 100%;
             display: flex;
             justify-content: space-between;
+            padding: 2rem 1.5rem;
         }
     }
 }
 .edit-form{
+    width: 100%;
     font-size: .8125rem;
     font-weight: 400;
     line-height: 1.25rem;
     color: $instock-black;
+    &__main{
+        @include tablet{
+            display: flex;
+            justify-content: space-between;
+            &--container{
+                flex-basis: 50%;
+            }&--container2{
+                padding-left: 32px;
+                border-left: 1px solid $cloud;
+            }&--container1{
+                padding-right: 32px;
+            }
+        }
+    }
     &__headers{
         font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: 600;
+        padding-top: 1rem;
+        @include tablet{
+            padding-top: 0;
+        }
+    }
+    &__body{
+        position: relative;
+        @include tablet{
+        }
     }
     &__title{
         font-weight: 600;
+        padding: 1rem 0.25rem 0;
+        display: inline-block;
     }
     &__input{
         width: 100%;
         border: 1px solid $cloud;
         border-radius: 20px;
-        padding: 5px 1rem;
+        padding: .5rem 1rem;
         &--text{
             height: 2.25rem;
         }
         &--textarea{
             height: 7.5rem;
         }
+        &--radio{
+            width: fit-content;
+        }
+    }
+    &__radio-group{
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        &--separation{
+            display: flex;
+            align-items: center;
+            flex-basis: 50%;
+            flex-grow: 1;
+            gap: .5rem;
+        }
+    }
+    &__sub-title{
+       width: fit-content;
+    }
+    &__button-group{
+        margin-left: -1.5rem;
+        margin-right: auto;
+        margin-top: 1rem;
+        bottom: 0;
+        width: calc(100% + 3rem);
+        display: flex;
+        justify-content: center;
+        gap: 5%;
+        padding: 1rem 0;
+        background-color: #F7F8F970;
+        border-bottom-left-radius: .5rem;
+        border-bottom-right-radius: .5rem;
+        @include tablet{
+            justify-content: flex-end;
+            gap: 2%;
+            margin-left: -4.5rem;
+        }
+    }
+}
+
+.btn{
+    padding: .5rem 3.9375rem;
+    border-radius: 1.25rem;
+    width: fit-content;
+    padding: .5rem 3.1875rem;
+    @include tablet{
+        padding: 8px 16px;
+    }
+    &__cancel{
+        color: $slate;
+        border: .0625rem solid $cloud;
+        
+    }
+    &__save{
+        color: $white;
+        background-color: $instock-indigo;
     }
 }

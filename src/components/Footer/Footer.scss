@@ -1,14 +1,17 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/font";
-
-.footer {
+.footer{
+  position: relative;
+  display: block;
+  padding: 50px 0;  
+}
+.footer__container {
   @include flex-center;
   background-color: $light-grey;
-  bottom: 0;
-  width: 100vw;
-  margin-top: auto;
-
+  height: 100%;
+  width: 100%;
+  
   &__text {
     color: $slate;
     margin: 2.5rem 0;
