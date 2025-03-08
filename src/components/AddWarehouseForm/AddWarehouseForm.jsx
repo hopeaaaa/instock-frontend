@@ -9,7 +9,7 @@ function AddWarehouseForm({ baseUrl, PORT }) {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [contactName, setContactName] = useState("");
-  const [contactPostion, setContactPosition] = useState("");
+  const [contactPosition, setContactPosition] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
 
@@ -37,23 +37,20 @@ function AddWarehouseForm({ baseUrl, PORT }) {
   function handleEmailChange(event) {
     setEmail(event.target.value);
   }
-
+  console.log(`${baseUrl + PORT}/api/warehouses`);
   const addWarehouse = async () => {
     try {
-      const response = await axios.post(
-        `${baseUrl + PORT}/warehouse/createwarehouse`,
-        {
-          warehouse_name: warehouseName,
-          address: address,
-          city: city,
-          country: country,
-          contact_name: personName,
-          contact_position: position,
-          contact_phone: phoneNumber,
-          contact_email: email,
-        }
-      );
-      console.log(response);
+      const response = await axios.post(`${baseUrl + PORT}/api/warehouses`, {
+        warehouse_name: warehouseName,
+        address: address,
+        city: city,
+        country: country,
+        contact_name: contactName,
+        contact_position: contactPosition,
+        contact_phone: phoneNumber,
+        contact_email: email,
+      });
+      console.log(response.data);
     } catch (error) {
       console.error("Unable to add warehouse", error);
     }
@@ -61,32 +58,37 @@ function AddWarehouseForm({ baseUrl, PORT }) {
 
   async function submitForm(event) {
     event.preventDefault();
-    if (
-      !warehouseName ||
-      !address ||
-      !city ||
-      !country ||
-      !contactName ||
-      !contactPostion ||
-      !phoneNumber ||
-      !email
-    )
-      return alert("Please fill all fields");
+    try {
+      if (
+        !warehouseName ||
+        !address ||
+        !city ||
+        !country ||
+        !contactName ||
+        !contactPosition ||
+        !phoneNumber ||
+        !email
+      )
+        return alert("Please fill all fields");
 
-    await addWarehouse();
+      await addWarehouse();
+      alert("Warehouse successfully added!");
 
-    setWarehouseName("");
-    setAddress("");
-    setCity("");
-    setCountry("");
-    setContactName("");
-    setContactPosition("");
-    setPhoneNumber("");
-    setEmail("");
+      setWarehouseName("");
+      setAddress("");
+      setCity("");
+      setCountry("");
+      setContactName("");
+      setContactPosition("");
+      setPhoneNumber("");
+      setEmail("");
+    } catch (error) {
+      alert("Unable to add warehouse", error);
+    }
   }
 
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={submitForm}>
       <div className="add-form__warehouse-info">
         <h3 className="add-form__header">Warehouse Details</h3>
         <label htmlFor="add-form__warehouse-name" className="add-form__label">
@@ -160,7 +162,7 @@ function AddWarehouseForm({ baseUrl, PORT }) {
           name="position"
           placeholder="Position"
           className="add-form__input"
-          value={contactPostion}
+          value={contactPosition}
           onChange={handleContactPositionChange}
           id="add-form__position"
         />
@@ -195,7 +197,7 @@ function AddWarehouseForm({ baseUrl, PORT }) {
             Cancel
           </button>
         </Link>
-        <button type="submit" className="add-form__submit" onClick={submitForm}>
+        <button type="submit" className="add-form__submit">
           + Add Warehouse
         </button>
       </div>
