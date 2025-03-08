@@ -111,7 +111,7 @@ function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
                   </svg>
                 </button>
 
-                <Link to={`/${item.id}/edit`}>
+                <Link to={`warehouse/${item.id}/edit`}>
                   <svg
                     className="warehouse-list__icon"
                     width="24"
@@ -130,6 +130,7 @@ function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
             </div>
           </div>
           <div className="warehouse-list__hidden">
+            <button onClick={() => handleDeleteClick(item)}>
             <svg
               className="warehouse-list__icon"
               width="24"
@@ -143,6 +144,8 @@ function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
                 fill="#C94515"
               />
             </svg>
+            </button>
+            <Link to={`/warehouse/${item.id}/edit`}>
             <svg
               className="warehouse-list__icon"
               width="24"
@@ -156,6 +159,7 @@ function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
                 fill="#2E66E6"
               />
             </svg>
+            </Link>
           </div>
         </div>
       ))}

@@ -42,7 +42,6 @@
         color: $instock-black;
         @include tablet{
             width: 100%;
-            display: flex;
             justify-content: space-between;
             padding: 2rem 1.5rem;
         }
@@ -118,22 +117,22 @@
        width: fit-content;
     }
     &__button-group{
-        margin-left: -1.5rem;
-        margin-right: auto;
-        margin-top: 1rem;
         bottom: 0;
-        width: calc(100% + 3rem);
-        display: flex;
-        justify-content: center;
-        gap: 5%;
+        width: 100%;
         padding: 1rem 0;
         background-color: #F7F8F970;
         border-bottom-left-radius: .5rem;
         border-bottom-right-radius: .5rem;
-        @include tablet{
-            justify-content: flex-end;
-            gap: 2%;
-            margin-left: -4.5rem;
+        
+        &--container{
+            display: flex;
+            justify-content: center;
+            gap: 5%;
+            @include tablet{
+                justify-content: flex-end;
+                margin-right: 2rem;
+                gap: 2%;
+            }
         }
     }
 }
@@ -141,7 +140,7 @@
 .btn{
     padding: .5rem 3.9375rem;
     border-radius: 1.25rem;
-    width: fit-content;
+    max-width: fit-content;
     padding: .5rem 3.1875rem;
     @include tablet{
         padding: 8px 16px;

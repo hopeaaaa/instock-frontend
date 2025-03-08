@@ -132,23 +132,23 @@
   &__radio-label {
     width: fit-content;
   }
-  &__button-group {
-    margin-left: -1.5rem;
-    margin-right: auto;
-    margin-top: 1rem;
+  &__button-group{
     bottom: 0;
-    width: calc(100% + 3rem);
-    display: flex;
-    justify-content: center;
-    gap: 5%;
+    width: 100%;
     padding: 1rem 0;
-    background-color: #f7f8f970;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    @include tablet {
-      justify-content: flex-end;
-      gap: 2%;
-      margin-left: -4.5rem;
+    background-color: #F7F8F970;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    
+    &--container{
+        display: flex;
+        justify-content: center;
+        gap: 5%;
+        @include tablet{
+            justify-content: flex-end;
+            margin-right: 2rem;
+            gap: 2%;
+        }
     }
   }
 }
