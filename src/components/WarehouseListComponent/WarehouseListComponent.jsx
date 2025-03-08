@@ -7,10 +7,9 @@ import loadWarehouses from "../../utils/FetchWarehousesList/FetchWarehousesList"
 function WarehouseListComponent({ handleDeleteClick }) {
   const [WarehouseList, setWarehouseList] = useState([]);
 
-
   useEffect(() => {
     const getWarehouses = async () => {
-      const response = await loadWarehouses("/warehouse");
+      const response = await loadWarehouses("/api/warehouses");
       setWarehouseList(response);
     };
     getWarehouses();
@@ -117,7 +116,7 @@ function WarehouseListComponent({ handleDeleteClick }) {
                     />
                   </svg>
                 </button>
-              
+
                 <Link to={`/${item.id}/warehouse`}>
                   <svg
                     className="warehouse-list__icon"
