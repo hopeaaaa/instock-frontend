@@ -10,7 +10,7 @@ const InventoryDetail = () => {
   const PORT = import.meta.env.VITE_SERVER_PORT;
   useEffect(() => {
     const getInventoryDetails = async () => {
-      const path = `${BASE_URL}:${PORT}/inventory/${param.id}`;
+      const path = `${BASE_URL}:${PORT}/api/inventories/${param.id}`;
       try {
         const response = await axios.get(path);
         console.log(response.data);
