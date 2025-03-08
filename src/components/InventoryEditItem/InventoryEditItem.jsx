@@ -21,14 +21,24 @@ function InventoryEditItem() {
     const onSubmitForm = async(e) =>{
         e.preventDefault();
         const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory/api/inventories/${param.id}`;
-        const response = await axios.put(path, {
-        item_name: name,
-        description: description,
-        category: category,
-        status: stockStatus,
-        quantity: quantity,
-        warehouse_id: warehouse,
-    });
+        try{
+            const response = await axios.put(path, {
+                id: param.id,
+                item_name: name,
+                description: description,
+                category: category,
+                status: stockStatus,
+                quantity: quantity,
+                warehouse_id: warehouse,
+            });
+            if (response.status === 200) {
+                window.location.href = '/inventory';
+            }
+        }catch(error){
+            console.log("Message:", error)
+            throw error;
+        }
+     
     }
     
     
@@ -144,7 +154,7 @@ console.log(data);
                 <div className='edit-form__radio-group'> 
                     <div className='edit-form__radio-group--separation'>
                         <input id="in-stock" type="radio" name="status" value="In Stock" 
-                           defaultChecked={stockStatus== "In Stock"} onChange={(e)=>setStockStatus(e.target.value)}
+                           checked={stockStatus== "In Stock"} onChange={(e)=>setStockStatus(e.target.value)}
                             className='edit-form__input edit-form__input--radio'
                         />
                         <label htmlFor="in-stock" className='edit-form__sub-title'>In Stock</label> 
@@ -152,7 +162,7 @@ console.log(data);
                     <div className='edit-form__radio-group--separation'>
                         <input selected id="Out of Stock" type="radio" name="status" 
                         value="out-of-stock" 
-                        defaultChecked={quantity==0} 
+                        checked={stockStatus !== "In Stock"} 
                         onClick={(e)=>{setStockStatus(e.target.value);}}
                         className='edit-form__input edit-form__input--radio'/>
                         <label htmlFor="out-of-stock" className='edit-form__sub-title'> Out of stock</label>
@@ -170,9 +180,11 @@ console.log(data);
                     onChange={(e) => setWarhouse(e.target.value)}
                     value={warehouse}
                     name='warehouse_id'>
+                        <option value="">----</option>
                     {warehouseList.map((ware,i)=>{
                             return<option key={i}  value={ware.id}>{ware.warehouse_name}</option>
                         })}
+                        
                 </select>
                 </section>
 
