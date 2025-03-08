@@ -40,7 +40,7 @@ function WarehouseInfo({ baseUrl, PORT, id }) {
             {warehouseinfo.warehouse_name}
           </h2>
         </div>
-        <Link to={`/${id}/edit`} className="warehouse-details__edit-section">
+        <Link to={`/warehouse/${id}/edit`} className="warehouse-details__edit-section">
           <img
             src={EditButton}
             alt="Edit Warehouse Details"
