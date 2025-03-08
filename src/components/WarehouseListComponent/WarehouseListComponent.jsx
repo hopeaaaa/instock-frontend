@@ -6,15 +6,7 @@ import loadWarehouses from "../../utils/FetchWarehousesList/FetchWarehousesList"
 
 function WarehouseListComponent({ handleDeleteClick }) {
   const [WarehouseList, setWarehouseList] = useState([]);
-  // const URL = import.meta.env.VITE_SERVER_BASE_URL;
-  // const PORT = import.meta.env.VITE_SERVER_PORT;
 
-  // async function loadWarehouses() {
-  //   try {
-  //     const response = await axios.get(`${URL}:${PORT}/warehouse`);
-  //     setWarehouseList(response.data);
-  //   } catch (error) {}
-  // }
 
   useEffect(() => {
     const getWarehouses = async () => {
@@ -125,7 +117,7 @@ function WarehouseListComponent({ handleDeleteClick }) {
                     />
                   </svg>
                 </button>
-                {/* </Link> */}
+              
                 <Link to={`/${item.id}/warehouse`}>
                   <svg
                     className="warehouse-list__icon"
