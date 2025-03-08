@@ -60,17 +60,16 @@
   }
 }
 
-a {
-  text-decoration: none;
-}
-
 .header-overlay {
   width: 100%;
   position: absolute;
   z-index: -1;
   background-color: $graphite;
-  height: 12.75rem;
+  height: 12.5rem;
   @include tablet {
+    height: 217.5px;
+  }
+  @include desktop {
     height: 225.5px;
   }
 }
