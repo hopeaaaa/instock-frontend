@@ -4,16 +4,8 @@ import axios from "axios";
 import "./WarehouseListComponent.scss";
 import loadWarehouses from "../../utils/FetchWarehousesList/FetchWarehousesList";
 
-function WarehouseListComponent({ handleDeleteClick }) {
-  const [WarehouseList, setWarehouseList] = useState([]);
+function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
 
-  useEffect(() => {
-    const getWarehouses = async () => {
-      const response = await loadWarehouses("/api/warehouses");
-      setWarehouseList(response);
-    };
-    getWarehouses();
-  }, []);
 
   return (
     <div className="warehouse-list">
@@ -119,7 +111,7 @@ function WarehouseListComponent({ handleDeleteClick }) {
                   </svg>
                 </button>
 
-                <Link to={`/${item.id}/warehouse`}>
+                <Link to={`/${item.id}/edit`}>
                   <svg
                     className="warehouse-list__icon"
                     width="24"
