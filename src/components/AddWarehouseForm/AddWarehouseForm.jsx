@@ -57,7 +57,8 @@ function AddWarehouseForm({ baseUrl, PORT }) {
   async function submitForm(event) {
     event.preventDefault();
     try {
-      const phoneNumberFormat = /^[0-9]{11}$/;
+      const phoneNumberFormat =
+        /^(\+?\d{1,3}[-.\s]?)?(\(?\d{3}\)?[-.\s]?)?\d{3}[-.\s]?\d{4}$/;
       const emailFormat =
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -102,7 +103,6 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="text"
-          name="locationName"
           placeholder="Warehouse Name"
           className="add-form__input"
           value={warehouseName}
@@ -114,7 +114,6 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="text"
-          name="address"
           placeholder="Street Address"
           className="add-form__input"
           value={address}
@@ -126,7 +125,6 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="text"
-          name="city"
           placeholder="City"
           className="add-form__input"
           value={city}
@@ -138,7 +136,6 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="text"
-          name="country"
           placeholder="Country"
           className="add-form__input"
           value={country}
@@ -153,7 +150,6 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="text"
-          name="personName"
           placeholder="Contact Name"
           className="add-form__input"
           value={contactName}
@@ -165,7 +161,6 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="text"
-          name="position"
           placeholder="Position"
           className="add-form__input"
           value={contactPosition}
@@ -177,7 +172,6 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="text"
-          name="phoneNumber"
           placeholder="Phone Number"
           className="add-form__input"
           value={phoneNumber}
@@ -189,7 +183,6 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="email"
-          name="email"
           placeholder="Email"
           className="add-form__input"
           value={email}
