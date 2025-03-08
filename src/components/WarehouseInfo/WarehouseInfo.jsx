@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import BackButton from "../../assets/icons/arrow_back-24px.svg";
 import EditButton from "../../assets/icons/edit-white-24px.svg";
 import axios from "axios";
+import "./WarehouseInfo.scss";
 
 function WarehouseInfo({ baseUrl, PORT, id }) {
   const [warehouseinfo, setWarehouseInfo] = useState([]);
