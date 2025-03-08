@@ -4,25 +4,24 @@
 .header {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem 0rem;
+  padding: 1.5rem 0rem;
   @include tablet {
     padding: 2rem 2rem;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
   @include desktop {
-    padding: 2.5rem 0 2rem;
-    max-width: 63.75rem;
-    margin: auto;
+    padding: 2.5rem 0rem 2rem;
+    margin: 0rem 5rem;
   }
   &__instock {
-    padding-bottom: 1rem;
-    @include dimensions(max-content, 100%);
+    padding-bottom: 1.75rem;
     display: flex;
     justify-content: center;
     @include tablet {
       width: max-content;
+      padding: 0rem;
     }
   }
   &__nav {
@@ -30,18 +29,27 @@
       color: $white;
       @include space-around;
       list-style-type: none;
-      padding: 0rem;
       @include tablet {
         justify-content: flex-end;
         width: max-content;
         gap: 1rem;
-        margin: 0rem;
       }
     }
     &-link {
       color: $cloud;
+      padding: 0.25rem 1.5rem;
+      border-radius: 1.25rem;
+      display: flex;
+      justify-content: center;
+      width: 45vw;
+      @include text-style(0.9375rem, 400, 1.625rem);
+      @include tablet {
+        width: max-content;
+        @include text-style(1rem, 400, 1.75rem);
+        padding: 0.375rem 1.5rem;
+      }
       &:hover {
-        background-color: $instock-indigo;
+        color: $white;
         text-decoration: underline;
       }
       &.active {
@@ -61,5 +69,8 @@ a {
   position: absolute;
   z-index: -1;
   background-color: $graphite;
-  height: 186px;
+  height: 12.75rem;
+  @include tablet {
+    height: 225.5px;
+  }
 }
