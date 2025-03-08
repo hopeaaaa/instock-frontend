@@ -192,7 +192,7 @@ function InventoryListComponent({ handleDeleteClick, inventoryList }) {
                     //   key={`item-city`}
                     className="inventory-list__text"
                   >
-                    {item.warehouse_id}
+                    {item.warehouse_name}
                   </li>
                 </ul>
               </div>

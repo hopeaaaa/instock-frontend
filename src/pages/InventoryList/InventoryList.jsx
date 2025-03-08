@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function InventoryList() {
-
   const [showDelete, setShowDelete] = useState(false);
   const [clickedItem, setClickedItem] = useState(null);
   const [inventoryList, setInventoryList] = useState([]);
@@ -22,7 +21,7 @@ function InventoryList() {
     const fetchInventory = async () => {
       try {
         const response = await axios.get(
-          `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory`
+          `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/api/inventories`
         );
         setInventoryList(response.data);
       } catch (error) {
@@ -31,7 +30,6 @@ function InventoryList() {
     };
     fetchInventory();
   }, []);
-  
 
   return (
     <>
@@ -43,7 +41,10 @@ function InventoryList() {
           item={clickedItem}
         />
       )}
-      <InventoryListComponent handleDeleteClick={handleDeleteClick} inventoryList={inventoryList} />
+      <InventoryListComponent
+        handleDeleteClick={handleDeleteClick}
+        inventoryList={inventoryList}
+      />
     </>
   );
 }
