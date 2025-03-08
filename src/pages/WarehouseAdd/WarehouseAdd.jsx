@@ -3,7 +3,7 @@ import BackButton from "../../assets/icons/arrow_back-24px.svg";
 import { Link } from "react-router-dom";
 import "./WarehouseAdd.scss";
 
-function WarehouseAdd() {
+function WarehouseAdd({ baseUrl, PORT }) {
   return (
     <div className="warehouse-add">
       <div className="warehouse-add__header">
@@ -16,7 +16,7 @@ function WarehouseAdd() {
         </Link>
         <h2 className="warehouse-add__name">Add New Warehouse</h2>
       </div>
-      <AddWarehouseForm />
+      <AddWarehouseForm baseUrl={baseUrl} PORT={PORT} />
     </div>
   );
 }

@@ -16,7 +16,7 @@ function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
             className="warehouse-list__search-input"
             placeholder="Search..."
           />
-          <Link to="/add">
+          <Link to="/warehouse/add">
             <button className="warehouse-list__add-button">
               + Add New Warehouse
             </button>
@@ -59,7 +59,9 @@ function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
                 <h3 className="warehouse-list__label">Warehouse</h3>
                 <ul>
                   <li className="warehouse-list__item-name">
-                    <Link to={`/${item.id}`}>{item.warehouse_name}</Link>{" "}
+                    <Link to={`/warehouse/${item.id}`}>
+                      {item.warehouse_name}
+                    </Link>{" "}
                   </li>
                 </ul>
               </div>

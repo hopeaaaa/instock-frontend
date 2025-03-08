@@ -5,12 +5,11 @@
   background-color: $white;
   color: $instock-black;
   margin: 0rem 1rem;
-  padding: 1rem 0rem;
   display: flex;
   flex-direction: column;
   border-top: 2px $cloud solid;
   &__header {
-    padding: 0rem 0rem 1rem;
+    padding: 0rem;
     margin: 0rem;
   }
   &__warehouse-info {
