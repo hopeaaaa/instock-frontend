@@ -2,10 +2,11 @@ import './InventoryEditItem.scss';
 import {Link, useParams} from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import axios from 'axios';
+const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
+const PORT = import.meta.env.VITE_SERVER_PORT
 
 function InventoryEditItem() {
-    const VITE_SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
-    const VITE_SERVER_PORT = import.meta.env.VITE_SERVER_PORT;
+
     const param = useParams();
     const [data, setData] = useState({});
     const [name, setName] = useState("");
@@ -20,7 +21,7 @@ function InventoryEditItem() {
     
     const onSubmitForm = async(e) =>{
         e.preventDefault();
-        const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/inventory/api/inventories/${param.id}`;
+        const path = `${BASE_URL}:${PORT}/api/inventories/${param.id}`;
         try{
             const response = await axios.put(path, {
                 id: param.id,
@@ -42,13 +43,9 @@ function InventoryEditItem() {
     }
     
     
-
-    
-    const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
-    const PORT = import.meta.env.VITE_SERVER_PORT;
     useEffect(() => {
         const getInventoryDetails = async () => {
-            const path = `${BASE_URL}:${PORT}/inventory/${param.id}`;
+            const path = `${BASE_URL}:${PORT}/api/inventories/${param.id}`;
             try {
                 const response = await axios.get(path);
                 setData(response.data);
@@ -71,7 +68,7 @@ function InventoryEditItem() {
 console.log(data);
     useEffect(()=>{
         const getCategories = async ()=>{
-            const path = `${BASE_URL}:${PORT}/inventory/api/inventories/category`;
+            const path = `${BASE_URL}:${PORT}/api/inventories/category`;
             try{
                 const response = await axios.get(path);
                 if (JSON.stringify(response.data) !== JSON.stringify(categoryList)) {
@@ -88,7 +85,7 @@ console.log(data);
     
     useEffect(()=>{
         const getWarehouses = async ()=>{
-            const path = `${BASE_URL}:${PORT}/warehouse`;
+            const path = `${BASE_URL}:${PORT}/api/warehouses`;
             try{
                 const response = await axios.get(path);
                 if (JSON.stringify(response.data) !== JSON.stringify(warehouseList)) {
@@ -162,7 +159,7 @@ console.log(data);
                     </div>
                     <div className='edit-form__radio-group--separation'>
                         <input selected id="Out of Stock" type="radio" name="status" 
-                        value="out-of-stock" 
+                        value="Out of Stock" 
                         checked={stockStatus !== "In Stock"} 
                         onClick={(e)=>{setStockStatus(e.target.value);}}
                         className='edit-form__input edit-form__input--radio'/>
