@@ -9,11 +9,10 @@ function AddWarehouseForm({ baseUrl, PORT }) {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [contactName, setContactName] = useState("");
-  const [contactPostion, SetContactPosition] = useState("");
+  const [contactPostion, setContactPosition] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
 
-  console.log(`${baseUrl + PORT}/warehouse/createwarehouse`);
   const handleWarehouseNameChange = (event) => {
     setWarehouseName(event.target.value);
   };
@@ -30,7 +29,7 @@ function AddWarehouseForm({ baseUrl, PORT }) {
     setContactName(event.target.value);
   }
   const handleContactPositionChange = (event) => {
-    SetContactPosition(event.target.value);
+    setContactPosition(event.target.value);
   };
   const handlePhoneNumberChange = (event) => {
     setPhoneNumber(event.target.value);
@@ -42,7 +41,17 @@ function AddWarehouseForm({ baseUrl, PORT }) {
   const addWarehouse = async () => {
     try {
       const response = await axios.post(
-        `${baseUrl + PORT}/warehouse/createwarehouse`
+        `${baseUrl + PORT}/warehouse/createwarehouse`,
+        {
+          warehouse_name: warehouseName,
+          address: address,
+          city: city,
+          country: country,
+          contact_name: personName,
+          contact_position: position,
+          contact_phone: phoneNumber,
+          contact_email: email,
+        }
       );
       console.log(response);
     } catch (error) {
@@ -50,9 +59,31 @@ function AddWarehouseForm({ baseUrl, PORT }) {
     }
   };
 
-  // const submitForm = (event) => {
-  //   const
-  // }
+  async function submitForm(event) {
+    event.preventDefault();
+    if (
+      !warehouseName ||
+      !address ||
+      !city ||
+      !country ||
+      !contactName ||
+      !contactPostion ||
+      !phoneNumber ||
+      !email
+    )
+      return alert("Please fill all fields");
+
+    await addWarehouse();
+
+    setWarehouseName("");
+    setAddress("");
+    setCity("");
+    setCountry("");
+    setContactName("");
+    setContactPosition("");
+    setPhoneNumber("");
+    setEmail("");
+  }
 
   return (
     <form className="add-form">
@@ -63,7 +94,7 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="text"
-          name="warehouse-name"
+          name="locationName"
           placeholder="Warehouse Name"
           className="add-form__input"
           value={warehouseName}
@@ -114,7 +145,7 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="text"
-          name="contact-name"
+          name="personName"
           placeholder="Contact Name"
           className="add-form__input"
           value={contactName}
@@ -138,7 +169,7 @@ function AddWarehouseForm({ baseUrl, PORT }) {
         </label>
         <input
           type="text"
-          name="phone-number"
+          name="phoneNumber"
           placeholder="Phone Number"
           className="add-form__input"
           value={phoneNumber}
@@ -164,11 +195,7 @@ function AddWarehouseForm({ baseUrl, PORT }) {
             Cancel
           </button>
         </Link>
-        <button
-          type="submit"
-          className="add-form__submit"
-          onClick={addWarehouse}
-        >
+        <button type="submit" className="add-form__submit" onClick={submitForm}>
           + Add Warehouse
         </button>
       </div>

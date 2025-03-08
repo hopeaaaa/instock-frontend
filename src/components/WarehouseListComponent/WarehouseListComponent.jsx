@@ -67,7 +67,9 @@ function WarehouseListComponent({ handleDeleteClick }) {
                 <h3 className="warehouse-list__label">Warehouse</h3>
                 <ul>
                   <li className="warehouse-list__item-name">
-                    <Link to={`/${item.id}`}>{item.warehouse_name}</Link>{" "}
+                    <Link to={`/warehouse/${item.id}`}>
+                      {item.warehouse_name}
+                    </Link>{" "}
                   </li>
                 </ul>
               </div>

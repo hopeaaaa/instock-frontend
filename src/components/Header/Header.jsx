@@ -9,7 +9,7 @@ function Header() {
       <div className="header-overlay__container">
         <div className="header">
           <div className="header__instock">
-            <NavLink to="/" className="temporary-link">
+            <NavLink to="/" className="header__home-link">
               <img
                 src={inStockLogo}
                 alt="InStock Logo"
