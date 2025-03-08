@@ -161,7 +161,7 @@ console.log(data);
                         <input selected id="Out of Stock" type="radio" name="status" 
                         value="Out of Stock" 
                         checked={stockStatus !== "In Stock"} 
-                        onClick={(e)=>{setStockStatus(e.target.value);}}
+                        onChange={(e)=>{setStockStatus(e.target.value);}}
                         className='edit-form__input edit-form__input--radio'/>
                         <label htmlFor="out-of-stock" className='edit-form__sub-title'> Out of stock</label>
                     </div>
