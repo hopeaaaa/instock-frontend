@@ -111,7 +111,7 @@ function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
                   </svg>
                 </button>
 
-                <Link to={`warehouse/${item.id}/edit`}>
+                <Link to={`/warehouse/${item.id}/edit`}>
                   <svg
                     className="warehouse-list__icon"
                     width="24"
