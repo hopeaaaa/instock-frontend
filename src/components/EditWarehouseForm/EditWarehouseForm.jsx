@@ -65,8 +65,32 @@ function EditWarehouseForm() {
   }
 
   return (
+    <main className="warehouse-edit">
+      <header className="warehouse-edit__header-container">
+        <div className="warehouse-edit__header">
+          <button className="warehouse-add__back-button">
+            <Link to={`/warehouse/${param.id}`}>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z"
+                  fill="#2E66E6"
+                />
+              </svg>
+            </Link>
+          </button>
+          <h2 className="inventory-add__component-header">
+            Edit Warehouse
+          </h2>
+        </div>
+      </header>
     <div className="form-container">
-      <form className="edit-form" onSubmit={onSubmitForm}>
+      <form className="edit-form warehouse-edit-form" id="edit-warehouse-form" onSubmit={onSubmitForm} >
         <div className='edit-form__separation'>
           <section className="edit-form__warehouse-info">
             <h3 className="edit-form__header">Warehouse Details</h3>
@@ -172,18 +196,22 @@ function EditWarehouseForm() {
             />
           </section>
         </div>
-        <div className="edit-form__buttons">
+        
+      </form>
+    </div>
+    <div className="edit-form__button-group">
+        <div className='edit-form__button-group--container'>
           <Link to="/">
             <button type="button" className="edit-form__cancel">
               Cancel
             </button>
           </Link>
-          <button type="submit" className="edit-form__submit">
+          <button type="submit" form="edit-warehouse-form" className="edit-form__submit">
             Save
           </button>
         </div>
-      </form>
-    </div>
+        </div>
+    </main>
   );
 }
 

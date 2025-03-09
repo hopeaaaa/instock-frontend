@@ -1,6 +1,40 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+.warehouse-edit{
+  background-color: $white;
+  box-shadow: 0 2px 5px 0 #13182C1A;
+  border-radius: 3px;
+  width: calc(100% - 1.5rem);
+  color: $instock-black;
+  background-color: $white;
+  @include tablet{
+    width: calc(100% - 3rem);
+}
+  @include desktop{
+      max-width: 64rem;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  &__header-container{
+    border-bottom: 1px solid $cloud;
+  }
+  &__header{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: 2rem 1rem;
+      @include tablet{
+          padding: 2rem 2rem;
+      }
+      @include desktop{
+          padding: 2rem 2.5rem;
+      }
+  }
+}
+
 .edit-form {
     width: calc(100% - 1rem);
   background-color: $white;
@@ -10,8 +44,13 @@
   flex-direction: column;
   border-top: 2px $cloud solid;
   &__separation{
-    flex-direction: row;
-}
+    @include tablet{
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: center;
+    }
+  }
   &__header {
     padding: 0rem 0rem 1rem;
     margin: 0rem;
@@ -34,6 +73,10 @@
   &__personnel-info {
     @extend .edit-form__warehouse-info;
     border-top: 2px $cloud solid;
+    @include tablet {
+      border-top: none;
+      border-left: 1px solid $cloud;
+    }
   }
   &__buttons {
     display: flex;
@@ -59,4 +102,8 @@
     @include tablet{
         padding: 0 2rem;
     }
+}
+
+.warehouse-edit-form{
+  border: none;
 }

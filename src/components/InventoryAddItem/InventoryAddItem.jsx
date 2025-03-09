@@ -94,6 +94,7 @@ function InventoryAddItem() {
           className="inventory-add-form"
           onSubmit={addInventory}
           ref={formRef}
+          id="add-form"
         >
           <div className="inventory-add-form__main">
             <section className="inventory-add-form__main--container inventory-add-form__main--container1">
@@ -208,17 +209,18 @@ function InventoryAddItem() {
               </select>
             </section>
           </div>
-
-          <div className="inventory-add-form__button-group">
-            <Link to="/" className="btn btn__cancel">
-              Cancel
-            </Link>
-            <button type="submit" className="btn btn__save">
-              + Add Inventory
-            </button>
-          </div>
         </form>
       </article>
+      <div className="inventory-add-form__button-group">
+        <div className="inventory-add-form__button-group--container">
+          <Link to="/inventory" className="btn btn__cancel">
+            Cancel
+          </Link>
+          <button type="submit" form="add-form" className="btn btn__save">
+            + Add Item
+          </button>
+        </div>
+      </div>
     </main>
   );
 }
