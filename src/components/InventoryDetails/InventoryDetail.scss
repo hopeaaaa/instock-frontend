@@ -7,6 +7,11 @@
     width: calc(100% - 1.5rem);
     color: $instock-black;
     background-color: $white;
+    margin-left: auto;
+    margin-right: auto;
+    @include desktop{
+        max-width: 1020px;
+    }
     &__header-container{
         border-bottom: 1px solid $cloud;
     }
@@ -35,6 +40,7 @@
         &--divider{
             display: flex;
             gap: .5rem;
+            align-items: center;
         }
         @include tablet{
             padding: 2rem 2rem;

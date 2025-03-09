@@ -100,14 +100,19 @@
         &--radio{
             width: fit-content;
         }
+        &--select {
+            appearance: none;
+            background: url("../../assets/icons/arrow_drop_down-24px.svg") no-repeat
+              97% center;
+          }
     }
     &__radio-group{
         display: flex;
         justify-content: flex-start;
+        align-items: center;
         width: 100%;
         &--separation{
             display: flex;
-            align-items: center;
             flex-basis: 50%;
             flex-grow: 1;
             gap: .5rem;
