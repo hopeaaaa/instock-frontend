@@ -33,9 +33,21 @@
     border-radius: 1.25rem;
     height: 2.25rem;
     border: 1px solid $light-grey;
+    padding: 1rem;
+    margin-right: 1rem;
+    background-image: url("../../assets/icons/search-24px.svg");
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+
+    &:focus,
+    &:focus-visible {
+      border: 1px solid $instock-indigo;
+      outline: none;
+    }
 
     @include tablet {
       height: 2.375rem;
+      max-widht: 4000px;
     }
   }
 
@@ -79,6 +91,10 @@
     padding: 1rem;
     justify-content: space-evenly;
 
+    &:hover {
+      background-color: $light-grey;
+    }
+
     &--subheader {
       display: none;
       background-color: $light-grey;
@@ -91,7 +107,6 @@
 
   &__details {
     flex-grow: 1;
-    flex-basis: 50%;
     align-items: center;
 
     @include tablet {
@@ -99,10 +114,19 @@
       flex-direction: row;
       flex-wrap: nowrap;
       flex-grow: 1;
-      flex-basis: 100%;
       justify-content: flex-start;
       width: 100%;
     }
+  }
+
+  &__details--two {
+    flex-basis: 33.3%;
+    max-width: 50%;
+  }
+
+  &__details--three {
+    flex-basis: 50%;
+    max-width: 50%;
   }
 
   &__detail {
@@ -124,6 +148,11 @@
     }
   }
 
+  &__action-icons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
   &__item-name {
     font-family: "Titillium Web", sans-serif;
     @include text-style(0.6875rem, 400, 1rem);
@@ -131,27 +160,51 @@
     display: flex;
     align-items: center;
     gap: 0.3125rem;
+    padding-bottom: 1rem;
 
     @include tablet {
       @include text-style(1rem, 400, 1.125rem);
+      padding-bottom: 0;
     }
   }
 
   &__text {
     font-family: "Titillium Web", sans-serif;
     @include text-style(0.6875rem, 400, 1rem);
+    padding-bottom: 1rem;
 
     @include tablet {
       @include text-style(1rem, 400, 1.125rem);
+      padding-bottom: 0;
     }
   }
 
   &__status {
     font-family: "Titillium Web", sans-serif;
     @include text-style(0.6875rem, 400, 1rem);
+    margin-bottom: 1rem;
 
     @include tablet {
       @include text-style(1rem, 400, 1.125rem);
+      margin-bottom: 0;
+    }
+
+    &--in-stock {
+      background-color: rgba(#158463, 0.07);
+      border-radius: 1.25rem;
+      padding: 0.25rem 0.5rem;
+      width: max-content;
+      color: $green;
+
+      font-weight: 600;
+    }
+    &--out-of-stock {
+      background-color: rgba(#c94515, 0.07);
+      border-radius: 1.25rem;
+      padding: 0.25rem 0.5rem;
+      width: max-content;
+      color: $red;
+      font-weight: 600;
     }
   }
 
@@ -162,7 +215,7 @@
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      flex-basis: 16.7%;
+      flex-basis: 10%;
       max-width: 16.7%;
     }
   }

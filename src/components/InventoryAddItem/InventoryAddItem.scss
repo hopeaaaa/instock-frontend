@@ -102,6 +102,11 @@
     border: 1px solid $cloud;
     border-radius: 20px;
     padding: 0.5rem 1rem;
+
+    &:active {
+      border-color: $instock-indigo;
+    }
+
     &--text {
       height: 2.25rem;
     }
@@ -132,23 +137,23 @@
   &__radio-label {
     width: fit-content;
   }
-  &__button-group{
+  &__button-group {
     bottom: 0;
     width: 100%;
     padding: 1rem 0;
-    background-color: #F7F8F970;
-    border-bottom-left-radius: .5rem;
-    border-bottom-right-radius: .5rem;
-    
-    &--container{
-        display: flex;
-        justify-content: center;
-        gap: 5%;
-        @include tablet{
-            justify-content: flex-end;
-            margin-right: 2rem;
-            gap: 2%;
-        }
+    background-color: #f7f8f970;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+
+    &--container {
+      display: flex;
+      justify-content: center;
+      gap: 5%;
+      @include tablet {
+        justify-content: flex-end;
+        margin-right: 2rem;
+        gap: 2%;
+      }
     }
   }
 }
@@ -164,9 +169,18 @@
   &__cancel {
     color: $slate;
     border: 0.0625rem solid $cloud;
+
+    &:hover {
+      color: $instock-indigo;
+      border-color: $instock-indigo;
+    }
   }
   &__save {
     color: $white;
     background-color: $instock-indigo;
+
+    &:hover {
+      background-color: $graphite;
+    }
   }
 }
