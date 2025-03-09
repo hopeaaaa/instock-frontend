@@ -125,7 +125,7 @@ console.log(data);
                 </div>
             </header>
         <article className='inventory-edit__body'>
-            <form className="edit-form" onSubmit={onSubmitForm}>
+            <form className="inventory-edit__form" id='edit-form' onSubmit={onSubmitForm}>
                 <div className='edit-form__main'>
                 <section className="edit-form__main--container edit-form__main--container1">
                     <h2 className='edit-form__headers'>Item Details</h2>
@@ -187,15 +187,14 @@ console.log(data);
                 </select>
                 </section>
                 </div>
-
-
-                <div className="edit-form__button-group">
-                    <Link to={'/inventory'} className="btn btn__cancel">Cancel</Link>
-                    <button type="submit" className="btn btn__save">Save</button>
-                </div>
             </form>
-
         </article>
+            <div className="edit-form__button-group">
+                <div className='edit-form__button-group--container'>
+                <Link to={'/inventory'} className="btn btn__cancel">Cancel</Link>
+                <button type="submit" className="btn btn__save" form='edit-form'>Save</button>
+                </div>
+            </div>
         </main>
     );
 }
