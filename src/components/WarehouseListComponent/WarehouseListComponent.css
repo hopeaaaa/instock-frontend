@@ -88,7 +88,8 @@ a {
 }
 @media screen and (min-width: 767px) {
   .warehouse-list__title {
-    margin-left: 2rem;
+    margin-left: 1rem;
+    padding-bottom: 0rem;
   }
 }
 .warehouse-list__search-input {
@@ -98,7 +99,6 @@ a {
   height: 2.25rem;
   border: 1px solid #5c667e;
   padding: 1rem;
-  margin-right: 1rem;
   background-image: url("../../assets/icons/search-24px.svg");
   background-position: right 10px center;
   background-repeat: no-repeat;
@@ -111,10 +111,14 @@ a {
   .warehouse-list__search-input {
     height: 2.375rem;
     max-width: 4000px;
+    margin-bottom: 0rem;
   }
 }
+.warehouse-list--warehouse-tablet {
+  width: 8.125rem;
+}
 .warehouse-list__add-button {
-  width: 100%;
+  width: 89vw;
   white-space: nowrap;
   border-radius: 1.25rem;
   height: 2.25rem;
@@ -128,11 +132,15 @@ a {
 @media screen and (min-width: 767px) {
   .warehouse-list__add-button {
     height: 2.375rem;
+    width: -moz-max-content;
+    width: max-content;
+    margin-left: 1rem;
   }
 }
 .warehouse-list__cta {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 @media screen and (min-width: 767px) {
   .warehouse-list__cta {
@@ -153,7 +161,8 @@ a {
     flex-basis: 20%;
     display: flex;
     align-items: center;
-    gap: 0.125rem;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
   }
 }
 .warehouse-list__horizontal-line {
@@ -166,8 +175,14 @@ a {
 }
 .warehouse-list__item {
   display: flex;
-  padding: 1rem;
+  padding: 1rem 1rem 0rem;
   justify-content: space-evenly;
+}
+@media screen and (min-width: 767px) {
+  .warehouse-list__item {
+    display: none;
+    padding: 0rem 2rem;
+  }
 }
 .warehouse-list__item--subheader {
   display: none;
@@ -182,6 +197,7 @@ a {
   .warehouse-list__item--subheader {
     display: flex;
     background-color: #f7f8f9;
+    padding: 1rem 2rem;
   }
 }
 .warehouse-list__details {
@@ -198,34 +214,85 @@ a {
     flex-wrap: nowrap;
     flex-grow: 1;
     flex-basis: 100%;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
   }
 }
-.warehouse-list__detail {
-  /* border: 2px solid red; */
-  /*   display: flex;
-  width: 100%;
-  white-space: nowrap;
-  margin-left: 2rem; */
-  /* justify-content: flex-start;
+@media screen and (min-width: 767px) {
+  .warehouse-list__horizontal-line {
+    display: none;
+  }
+}
+.warehouse-list--tablet-inputs {
+  display: none;
+}
+@media screen and (min-width: 767px) {
+  .warehouse-list--tablet-inputs {
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.warehouse-list--tablet-inputs:hover {
+  background-color: #f0f4fd;
+}
+.warehouse-list--tablet-location-name:hover {
+  text-decoration: underline;
+}
+@media screen and (min-width: 767px) {
+  .warehouse-list--tablet-address {
+    width: 9.0625rem;
+  }
+}
+@media screen and (min-width: 767px) {
+  .warehouse-list--tablet-contact-name {
+    width: 7.8125rem;
+  }
+}
+@media screen and (min-width: 767px) {
+  .warehouse-list--tablet-contact-info {
+    width: 10.625rem;
+  }
+}
+.warehouse-list--tablet-icons {
+  display: flex;
   align-items: center;
-  width: max-content; */
+  gap: 1rem;
+}
+.warehouse-list--tablet-actions {
+  width: 4rem;
+  align-self: flex-end;
+}
+.warehouse-list__sections {
+  display: none;
+}
+@media screen and (min-width: 767px) {
+  .warehouse-list__sections {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    flex-basis: 100%;
+    justify-content: flex-start;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 @media screen and (min-width: 767px) {
   .warehouse-list__detail {
     display: flex;
-    width: 100%;
+    justify-content: flex-start;
   }
 }
 .warehouse-list__label {
   font-family: "Titillium Web", sans-serif;
   /* border: red 2px solid; */
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 400;
-  line-height: 1rem;
+  line-height: 1.25rem;
   color: #5c667e;
-  margin-bottom: 0.5rem;
 }
 @media screen and (min-width: 767px) {
   .warehouse-list__label {
@@ -236,11 +303,8 @@ a {
   }
 }
 .warehouse-list__item-name {
-  font-family: "Titillium Web", sans-serif;
-  /*     display: flex;
+  display: flex;
   align-items: center;
-  gap: 0.3125rem; */
-  /*   border: blue 2px solid; */
   font-size: 0.6875rem;
   font-weight: 400;
   line-height: 1rem;
@@ -255,35 +319,52 @@ a {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.125rem;
+    width: 130px;
+    padding: 0rem;
+  }
+}
+.warehouse-list__name {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.625rem;
+}
+.warehouse-list__name:hover {
+  text-decoration: underline;
+}
+@media screen and (min-width: 767px) {
+  .warehouse-list__name {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75rem;
   }
 }
 .warehouse-list__text {
   /* margin-left: 0.5rem; */
   white-space: nowrap;
-  font-family: "Titillium Web", sans-serif;
-  font-size: 0.6875rem;
+  font-size: 0.9375rem;
   font-weight: 400;
-  line-height: 1rem;
+  line-height: 1.625rem;
   padding-bottom: 1rem;
 }
 @media screen and (min-width: 767px) {
   .warehouse-list__text {
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 .warehouse-list__status {
   font-family: "Titillium Web", sans-serif;
-  font-size: 0.6875rem;
+  font-size: 0.9375rem;
   font-weight: 400;
-  line-height: 1rem;
+  line-height: 1.625rem;
+  padding-bottom: 1rem;
 }
 @media screen and (min-width: 767px) {
   .warehouse-list__status {
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 .warehouse-list__actions {
@@ -293,9 +374,9 @@ a {
   .warehouse-list__actions {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    flex-basis: 10%;
-    max-width: 10%;
+    align-items: flex-end;
+    width: -moz-max-content;
+    width: max-content;
   }
 }
 .warehouse-list__action-icons {
