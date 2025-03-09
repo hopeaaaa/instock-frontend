@@ -92,7 +92,6 @@ function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
             <div className="warehouse-list__actions">
               <h3 className="warehouse-list__label">Actions</h3>
               <div className="warehouse-list__action-icons">
-                {/* <Link to={`/${item.id}`}> */}
                 <button onClick={() => handleDeleteClick(item)}>
                   <svg
                     className="warehouse-list__icon"
