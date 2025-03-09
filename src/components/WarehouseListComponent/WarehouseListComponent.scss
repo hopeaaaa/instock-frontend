@@ -46,7 +46,7 @@
     height: 2.25rem;
     border: 1px solid $slate;
     padding: 1rem;
-    margin-right: 1rem;
+
     background-image: url("../../assets/icons/search-24px.svg");
     background-position: right 10px center;
     background-repeat: no-repeat;
@@ -60,6 +60,7 @@
     @include tablet {
       height: 2.375rem;
       max-width: 4000px;
+      margin-bottom: 0rem;
     }
   }
 
@@ -68,7 +69,7 @@
   }
 
   &__add-button {
-    width: 100%;
+    width: 89vw;
     white-space: nowrap;
     border-radius: 1.25rem;
     height: 2.25rem;
@@ -81,6 +82,8 @@
 
     @include tablet {
       height: 2.375rem;
+      width: max-content;
+      margin-left: 1rem;
     }
   }
 
@@ -88,6 +91,7 @@
   &__cta {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     @include tablet {
       flex-direction: row;
@@ -175,7 +179,12 @@
         align-items: center;
       }
       &:hover {
-        background-color: $instock-indigo;
+        background-color: #f0f4fd;
+      }
+    }
+    &-location-name {
+      &:hover {
+        text-decoration: underline;
       }
     }
     &-address {
@@ -263,7 +272,9 @@
 
   &__name {
     @include text-style(0.9375rem, 400, 1.625rem);
-
+    &:hover {
+      text-decoration: underline;
+    }
     @include tablet {
       @include text-style(1rem, 400, 1.75rem);
     }
