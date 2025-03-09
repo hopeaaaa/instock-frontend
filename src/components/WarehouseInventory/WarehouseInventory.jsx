@@ -18,7 +18,7 @@ function WarehouseInventory({
   return (
     <>
       <ul className="warehouse-details__tablet-filter">
-        <li className="warehouse-details__tablet-label">
+        <li className="warehouse-details__tablet-label--item">
           <h5 className="warehouse-details__tablet-name">INVENTORY ITEM</h5>
           <img
             src={SortImage}
@@ -57,7 +57,7 @@ function WarehouseInventory({
       {inventories.map((item) => {
         return (
           <div className="warehouse-details__inventory" key={item.id}>
-            <div className="warehouse-details__item warehouse-details__item-info">
+            <div className="warehouse-details__item warehouse-details__item-info--item">
               <h5 className="warehouse-details__label--mobile">
                 INVENTORY ITEM
               </h5>
@@ -75,17 +75,23 @@ function WarehouseInventory({
                 />
               </Link>
             </div>
-            <div className="warehouse-details__category warehouse-details__item-info">
+            <div className="warehouse-details__category warehouse-details__item-info--item2">
               <h5 className="warehouse-details__label--mobile">CATEGORY</h5>
-              <p className="warehouse-details__item-input">{item.category}</p>
+              <p className="warehouse-details__item-input--category">
+                {item.category}
+              </p>
             </div>
-            <div className="warehouse-details__status warehouse-details__item-info">
+            <div className="warehouse-details__status warehouse-details__item-info--item3">
               <h5 className="warehouse-details__label--mobile">STATUS</h5>
-              <p className="warehouse-details__item-input">{item.status}</p>
+              <p className="warehouse-details__item-input--status">
+                {item.status}
+              </p>
             </div>
             <div className="warehouse-details__quantity warehouse-details__item-info">
               <h5 className="warehouse-details__label--mobile">QUANTITY</h5>
-              <p className="warehouse-details__item-input">{item.quantity}</p>
+              <p className="warehouse-details__item-input--quantity">
+                {item.quantity}
+              </p>
             </div>
 
             <div className="warehouse-details__actions">
