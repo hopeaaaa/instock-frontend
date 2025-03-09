@@ -1,0 +1,90 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.add-form {
+  background-color: $white;
+  color: $instock-black;
+  margin: 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+  border-top: 0.125rem $cloud solid;
+  @include tablet {
+    flex-flow: row wrap;
+    margin: 0rem 2rem;
+  }
+  @include desktop {
+    margin: 0rem 5rem;
+  }
+  &__header {
+    padding-bottom: 2rem;
+    @include text-style(1.25rem, 600, 1.5rem);
+    @include tablet {
+      @include text-style(1.5rem, 600, 1.75rem);
+    }
+  }
+  &__warehouse-info {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    @include tablet {
+      flex-grow: 1;
+      padding: 0rem 2rem;
+      margin: 2rem 0rem;
+    }
+  }
+  &__label {
+    font-weight: 600;
+    padding-bottom: 0.25rem;
+  }
+  &__input {
+    padding: 0.5rem 1.25rem;
+    border: 0.0625rem $cloud solid;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+  }
+  &__personnel-info {
+    @extend .add-form__warehouse-info;
+    border-top: 0.125rem $cloud solid;
+    @include tablet {
+      padding: 0rem 2rem;
+      border-top: none;
+      border-left: 0.125rem $cloud solid;
+      margin: 2rem 0rem;
+    }
+  }
+  &__buttons {
+    @include space-between;
+    background-color: $light-grey;
+    padding: 1rem;
+    @include tablet {
+      justify-content: flex-end;
+      gap: 1rem;
+      width: 100%;
+    }
+    @include desktop {
+      padding: 1rem 2rem;
+    }
+  }
+  &__cancel {
+    padding: 0.375rem 1rem;
+    border: 0.0625rem $cloud solid;
+    border-radius: 1.25rem;
+    width: 40vw;
+    @include text-style(0.8125rem, 400, 1.25rem);
+    @include tablet {
+      width: max-content;
+      padding: 0.5rem 1rem;
+    }
+  }
+  &__submit {
+    padding: 0.375rem 1rem;
+    background-color: $instock-indigo;
+    border-radius: 1.25rem;
+    color: $white;
+    width: 40vw;
+    @include text-style(0.8125rem, 400, 1.25rem);
+    @include tablet {
+      width: max-content;
+    }
+  }
+}

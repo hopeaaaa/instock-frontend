@@ -1,0 +1,26 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.warehouse-add {
+  color: $instock-black;
+  display: flex;
+  flex-direction: column;
+  &__header {
+    display: flex;
+    flex-direction: row;
+    background-color: $white;
+    margin: 0rem 1rem;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 1rem;
+    @include text-style(1.25rem, 600, 1.75rem);
+    @include tablet {
+      @include text-style(1.5rem, 600, 2rem);
+      padding: 3rem 2rem 2rem;
+      margin: 0rem 2rem;
+    }
+    @include desktop {
+      margin: 0rem 5rem;
+    }
+  }
+}
