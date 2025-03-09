@@ -213,14 +213,14 @@ function InventoryAddItem() {
       </article>
       <div className="inventory-add-form__button-group">
         <div className="inventory-add-form__button-group--container">
-            <Link to="/" className="btn btn__cancel">
-              Cancel
-            </Link>
-            <button type="submit" form="add-form" className="btn btn__save">
-              + Add Inventory
-            </button>
-          </div>
+          <Link to="/inventory" className="btn btn__cancel">
+            Cancel
+          </Link>
+          <button type="submit" form="add-form" className="btn btn__save">
+            + Add Item
+          </button>
         </div>
+      </div>
     </main>
   );
 }

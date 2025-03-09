@@ -17,6 +17,10 @@
     @include tablet {
       @include text-style(1.5rem, 600, 2rem);
       padding: 3rem 2rem 2rem;
+      margin: 0rem 2rem;
+    }
+    @include desktop {
+      margin: 0rem 5rem;
     }
   }
 }
