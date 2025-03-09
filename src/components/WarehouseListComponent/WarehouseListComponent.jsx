@@ -5,8 +5,6 @@ import "./WarehouseListComponent.scss";
 import loadWarehouses from "../../utils/FetchWarehousesList/FetchWarehousesList";
 
 function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
-
-
   return (
     <div className="warehouse-list">
       <div className="warehouse-list__header">
@@ -111,7 +109,7 @@ function WarehouseListComponent({ handleDeleteClick, WarehouseList }) {
                   </svg>
                 </button>
 
-                <Link to={`/${item.id}/edit`}>
+                <Link to={`/warehouse/${item.id}/edit`}>
                   <svg
                     className="warehouse-list__icon"
                     width="24"
