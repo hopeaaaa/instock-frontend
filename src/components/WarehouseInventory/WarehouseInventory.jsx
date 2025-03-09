@@ -6,9 +6,15 @@ import SortImage from "../../assets/icons/sort-24px.svg";
 import axios from "axios";
 import InventoryDeleteModal from "../InventoryDeleteModal/InventoryDeleteModal";
 import { useEffect, useState } from "react";
+import "./WarehouseInventory.scss";
 
-function WarehouseInventory({ baseUrl, PORT, id, handleDeleteClick, inventories }) {
-  
+function WarehouseInventory({
+  baseUrl,
+  PORT,
+  id,
+  handleDeleteClick,
+  inventories,
+}) {
   return (
     <>
       <ul className="warehouse-details__tablet-filter">

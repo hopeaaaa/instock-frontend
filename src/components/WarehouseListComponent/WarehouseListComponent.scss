@@ -3,18 +3,23 @@
 @use "../../styles/partials/font" as *;
 @use "../../styles/partials/resets" as *;
 
-//border: 2px solid blue;
 .warehouse-list {
   background-color: $white;
   width: calc(100% - 1rem);
   border-radius: 0.1875rem;
   box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1019607843);
-  margin-left: auto;
-  margin-right: auto;
-  
-  @include desktop{
-    max-width: 63.75rem;
+  margin: auto;
+
+  @include tablet {
+    width: calc(100% - 2rem);
+    max-width: 1020px;
   }
+
+  &__megawrapper {
+    border: none;
+    /*     border: 2px solid black; */
+  }
+
   &__header {
     padding: 1.5rem 1rem 1.5rem 1rem;
 
@@ -27,16 +32,23 @@
 
   &__title {
     padding-bottom: 1rem;
+
+    @include tablet {
+      margin-left: 2rem;
+    }
   }
 
   &__search-input {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     width: 100%;
     border-radius: 1.25rem;
     height: 2.25rem;
     border: 1px solid $slate;
     padding: 1rem;
     margin-right: 1rem;
+    background-image: url("../../assets/icons/search-24px.svg");
+    background-position: right 10px center;
+    background-repeat: no-repeat;
 
     &:focus,
     &:focus-visible {
@@ -46,39 +58,61 @@
 
     @include tablet {
       height: 2.375rem;
+      max-width: 4000px;
     }
   }
 
   &__add-button {
     width: 100%;
+    white-space: nowrap;
     border-radius: 1.25rem;
     height: 2.25rem;
     background-color: $instock-indigo;
     color: $white;
-    padding: 0.35rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @include tablet {
       height: 2.375rem;
     }
   }
 
+  //search + add button
   &__cta {
     display: flex;
     flex-direction: column;
 
     @include tablet {
       flex-direction: row;
+      margin-right: 2rem;
     }
   }
 
   &__column-header {
     text-transform: uppercase;
     color: $slate;
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    display: none;
+
     @include tablet {
+      display: flex;
+      align-items: center;
+      gap: 0.125rem;
       flex-grow: 1;
-      /* flex-basis: 16.7%;
-      max-width: 16.7%;
-      border: 2px solid red; */
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+      flex-basis: 16.7%;
+      max-width: max-content;
+    }
+  }
+
+  &__horizontal-line {
+    border: 1px solid $cloud;
+    @include tablet {
+      border: 1px solid $light-grey;
     }
   }
 
@@ -89,17 +123,35 @@
 
     &--subheader {
       display: none;
-
+      /*  border: 2px solid red; */
       @include tablet {
         display: flex;
+        background-color: $light-grey;
       }
+
+      /*    &--subheader :nth-child(3) {
+        margin-left: 10px;
+      } */
+      /*     &--subheader :nth-child(4){}
+      &--subheader :last-child{} */
     }
+  }
+
+  &__detail:nth-child(1) {
+    flex: 4;
+  }
+  &__detail:nth-child(2) {
+    flex: 2;
+  }
+  &__detail:nth-child(3) {
+    flex: 2;
   }
 
   &__details {
     flex-grow: 1;
     flex-basis: 50%;
     align-items: center;
+    /* padding: 0.5rem; */
     /* border: 2px solid red; */
 
     @include tablet {
@@ -113,7 +165,17 @@
     }
   }
 
+  //content
   &__detail {
+    /* border: 2px solid red; */
+    /*   display: flex;
+    width: 100%;
+    white-space: nowrap;
+    margin-left: 2rem; */
+    /* justify-content: flex-start;
+    align-items: center;
+    width: max-content; */
+
     @include tablet {
       display: flex;
       width: 100%;
@@ -122,29 +184,68 @@
 
   &__label {
     font-family: "Titillium Web", sans-serif;
+    /* border: red 2px solid; */
     @include text-style(0.6875rem, 400, 1rem);
     color: $slate;
+    margin-bottom: 0.5rem;
 
     @include tablet {
       display: none;
+
       @include text-style(1rem, 400, 1.125rem);
     }
   }
 
+  //warehouse name
   &__item-name {
     font-family: "Titillium Web", sans-serif;
-    font-weight: 600;
+    /*     display: flex;
+    align-items: center;
+    gap: 0.3125rem; */
+    /*   border: blue 2px solid; */
+
+    @include text-style(0.6875rem, 400, 1rem);
     color: $instock-indigo;
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      @include text-style(1rem, 400, 1.125rem);
+    }
   }
 
+  /*   &__text-container {
+    text-align: center;
+  } */
+
+  //address
   &__text {
+    /* margin-left: 0.5rem; */
+    white-space: nowrap;
+
     font-family: "Titillium Web", sans-serif;
+    @include text-style(0.6875rem, 400, 1rem);
+    padding-bottom: 1rem;
+
+    @include tablet {
+      @include text-style(1rem, 400, 1.125rem);
+    }
   }
 
+  //contact name and contact info
   &__status {
     font-family: "Titillium Web", sans-serif;
+    @include text-style(0.6875rem, 400, 1rem);
+    padding-bottom: 1rem;
+
+    @include tablet {
+      @include text-style(1rem, 400, 1.125rem);
+    }
   }
 
+  //header + icons
   &__actions {
     display: none;
 
@@ -155,6 +256,16 @@
       flex-basis: 16.7%;
       max-width: 16.7%;
     }
+  }
+
+  //icons
+  &__action-icons {
+    display: flex;
+    gap: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    /*   border: solid 2px red; */
   }
 
   &__hidden {
