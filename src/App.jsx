@@ -13,6 +13,7 @@ import InventoryEdit from "./pages/InventoryEdit/InventoryEdit.jsx";
 
 function App() {
   const baseUrl = import.meta.env.VITE_SERVER_BASE_URL;
+  fetch(`${baseUrl}/api/inventories`);
 
   return (
     <BrowserRouter>
@@ -22,11 +23,11 @@ function App() {
         <Route path="/warehouse" element={<WarehouseList />} />
         <Route
           path="/warehouse/:id"
-          element={<WarehouseDetails baseUrl={baseUrl} PORT={PORT} />}
+          element={<WarehouseDetails baseUrl={baseUrl} />}
         />
         <Route
           path="/warehouse/add"
-          element={<WarehouseAdd baseUrl={baseUrl} PORT={PORT} />}
+          element={<WarehouseAdd baseUrl={baseUrl} />}
         />
         <Route path="/warehouse/:id/edit" element={<WarehouseEdit />} />
         <Route path="/inventory" element={<InventoryList />} />
