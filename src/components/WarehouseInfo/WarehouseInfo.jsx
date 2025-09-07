@@ -5,14 +5,12 @@ import EditButton from "../../assets/icons/edit-white-24px.svg";
 import axios from "axios";
 import "./WarehouseInfo.scss";
 
-function WarehouseInfo({ baseUrl, PORT, id }) {
-  const [warehouseinfo, setWarehouseInfo] = useState([]);
+function WarehouseInfo({ baseUrl, id }) {
+  const [warehouseinfo, setWarehouseInfo] = useState({});
 
   const getWarehouseInfo = async () => {
     try {
-      const response = await axios.get(
-        `${baseUrl}${PORT}/api/warehouses/${id}`
-      );
+      const response = await axios.get(`${baseUrl}/api/warehouses/${id}`);
       setWarehouseInfo(response.data);
     } catch (error) {
       console.error(
@@ -24,24 +22,27 @@ function WarehouseInfo({ baseUrl, PORT, id }) {
 
   useEffect(() => {
     getWarehouseInfo();
-  }, []);
+  }, [id, baseUrl]);
 
   return (
     <>
       <div className="warehouse-details__header">
         <div className="warehouse-details__header-left">
-          <Link to="/">
+          <Link to="/warehouses">
             <img
               src={BackButton}
-              alt="Back Button to Home Page"
+              alt="Back Button to Warehouse List"
               className="warehouse-details__back-button"
             />
           </Link>
           <h2 className="warehouse-details__name">
-            {warehouseinfo.warehouse_name}
+            {warehouseinfo?.warehouse_name}
           </h2>
         </div>
-        <Link to={`/warehouse/${id}/edit`} className="warehouse-details__edit-section">
+        <Link
+          to={`/warehouse/${id}/edit`}
+          className="warehouse-details__edit-section"
+        >
           <img
             src={EditButton}
             alt="Edit Warehouse Details"
@@ -53,23 +54,23 @@ function WarehouseInfo({ baseUrl, PORT, id }) {
       <div className="warehouse-details__information">
         <div className="warehouse-details__location">
           <h5 className="warehouse-details__label">WAREHOUSE ADDRESS</h5>
-          <p className="warehouse-details__input">{warehouseinfo.address}</p>
+          <p className="warehouse-details__input">{warehouseinfo?.address}</p>
         </div>
         <div className="warehouse-details__contact">
           <div className="warehouse-details__contact-person">
             <h5 className="warehouse-details__label">CONTACT NAME</h5>
             <p className="warehouse-details__input">
-              {warehouseinfo.contact_name}
+              {warehouseinfo?.contact_name}
               <br />
-              {warehouseinfo.contact_position}
+              {warehouseinfo?.contact_position}
             </p>
           </div>
           <div className="warehouse-details__contact-info">
             <h5 className="warehouse-details__label">CONTACT INFORMATION</h5>
             <p className="warehouse-details__input">
-              {warehouseinfo.contact_phone}
+              {warehouseinfo?.contact_phone}
               <br />
-              {warehouseinfo.contact_email}
+              {warehouseinfo?.contact_email}
             </p>
           </div>
         </div>

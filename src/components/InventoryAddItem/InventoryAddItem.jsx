@@ -5,7 +5,6 @@ import axios from "axios";
 import loadWarehouses from "../../utils/FetchWarehousesList/FetchWarehousesList.jsx";
 
 const VITE_SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
-const VITE_SERVER_PORT = import.meta.env.VITE_SERVER_PORT;
 
 function InventoryAddItem() {
   const formRef = useRef();
@@ -24,7 +23,7 @@ function InventoryAddItem() {
 
   useEffect(() => {
     const getCategories = async () => {
-      const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/api/inventories/category`;
+      const path = `${VITE_SERVER_BASE_URL}/api/inventories/category`;
       try {
         const response = await axios.get(path);
         if (JSON.stringify(response.data) !== JSON.stringify(categoryList)) {
@@ -36,7 +35,7 @@ function InventoryAddItem() {
       }
     };
     getCategories();
-  }, [categoryList]);
+  }, []);
 
   const addInventory = async (e) => {
     e.preventDefault();
@@ -46,7 +45,7 @@ function InventoryAddItem() {
       formRef.current;
     console.log(quantity.defaultValue);
 
-    const path = `${VITE_SERVER_BASE_URL}:${VITE_SERVER_PORT}/api/inventories`;
+    const path = `${VITE_SERVER_BASE_URL}/api/inventories`;
     const response = await axios.post(path, {
       item_name: item_name.value,
       description: description.value,

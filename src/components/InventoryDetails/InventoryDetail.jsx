@@ -7,22 +7,21 @@ const InventoryDetail = () => {
   const param = useParams();
   const [data, setData] = useState({});
   const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
-  const PORT = import.meta.env.VITE_SERVER_PORT;
+
   useEffect(() => {
     const getInventoryDetails = async () => {
-      const path = `${BASE_URL}:${PORT}/api/inventories/${param.id}`;
+      const path = `${BASE_URL}/api/inventories/${param.id}`;
       try {
         const response = await axios.get(path);
-        console.log(response.data);
+        console.log("Fetched data:", response.data);
         setData(response.data);
       } catch (error) {
         console.error("Unable get inventory by id:", error);
-        throw error;
       }
     };
     getInventoryDetails();
     console.log(data);
-  }, []);
+  }, [param.id, BASE_URL]);
 
   let stockClassName =
     data.status !== "Out of Stock" ? "in-stock" : "out-of-stock";
@@ -50,8 +49,11 @@ const InventoryDetail = () => {
             </Link>
             <h1 className="inventory-details__item-name">{data.item_name}</h1>
           </div>
-      
-          <Link to={`/inventory/${data.id}/edit`} className="inventory-details__edit-button">
+
+          <Link
+            to={`/inventory/${data.id}/edit`}
+            className="inventory-details__edit-button"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -67,7 +69,6 @@ const InventoryDetail = () => {
             </svg>
             <p className="inventory-details__edit-button--text">Edit</p>
           </Link>
-        
         </header>
       </div>
       <article className="inventory-details__body">

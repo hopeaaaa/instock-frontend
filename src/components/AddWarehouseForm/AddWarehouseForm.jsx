@@ -3,7 +3,7 @@ import "./AddWarehouseForm.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function AddWarehouseForm({ baseUrl, PORT }) {
+function AddWarehouseForm({ baseUrl }) {
   const [warehouseName, setWarehouseName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -39,7 +39,7 @@ function AddWarehouseForm({ baseUrl, PORT }) {
   }
   const addWarehouse = async () => {
     try {
-      const response = await axios.post(`${baseUrl + PORT}/api/warehouses`, {
+      const response = await axios.post(`${baseUrl}/api/warehouses`, {
         warehouse_name: warehouseName,
         address: address,
         city: city,

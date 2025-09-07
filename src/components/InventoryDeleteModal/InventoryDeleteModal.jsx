@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./InventoryDeleteModal.scss";
 
@@ -10,14 +8,13 @@ const InventoryDeleteModal = ({
   setInventoryList,
 }) => {
   const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
-  const PORT = import.meta.env.VITE_SERVER_PORT;
 
   const onDelete = async () => {
     try {
-      const path = `${BASE_URL}:${PORT}/api/inventories/${item.id}`;
+      const path = `${BASE_URL}/api/inventories/${item.id}`;
       const response = await axios.delete(path);
 
-      if (response.status == 204) {
+      if (response.status === 204) {
         setInventoryList(inventoryList.filter((i) => i.id != item.id));
         setShowDelete(false);
       }

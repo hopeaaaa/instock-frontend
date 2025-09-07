@@ -4,21 +4,19 @@ import "./WarehouseDeleteModal.scss";
 const WarehouseDeleteModal = ({
   item,
   setShowDelete,
-  warehouseList, setWarehouseList
+  warehouseList,
+  setWarehouseList,
 }) => {
   const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
-  const PORT = import.meta.env.VITE_SERVER_PORT;
 
   const onDelete = async () => {
     try {
-      const path = `${BASE_URL}:${PORT}/api/warehouses/${item.id}`;
+      const path = `${BASE_URL}/api/warehouses/${item.id}`;
       const response = await axios.delete(path);
 
-      if (response.status == 204) {
-        if (response.status == 204) {
-          setWarehouseList(warehouseList.filter((i) => i.id != item.id));
-          setShowDelete(false);
-        }
+      if (response.status === 204) {
+        // remove from state
+        setWarehouseList(warehouseList.filter((i) => i.id !== item.id));
         setShowDelete(false);
       }
     } catch (error) {
@@ -35,9 +33,7 @@ const WarehouseDeleteModal = ({
             <div className="delete-modal__content">
               <button
                 className="delete-modal__close-btn"
-                onClick={() => {
-                  setShowDelete(false);
-                }}
+                onClick={() => setShowDelete(false)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -53,12 +49,12 @@ const WarehouseDeleteModal = ({
                 </svg>
               </button>
               <div className="delete-modal__header">
-                <h2>Delete {item.warehouse_name} warehouse?</h2>
+                <h2>Delete {item?.warehouse_name} warehouse?</h2>
               </div>
               <div className="delete-modal__body">
                 <p>
-                  Please confirm that you'd like to delete the{" "}
-                  {item.warehouse_name} from the list of warehouses.
+                  Please confirm that you'd like to delete{" "}
+                  {item?.warehouse_name} from the list of warehouses.
                 </p>
                 <p>You won’t be able to undo this action.</p>
               </div>
